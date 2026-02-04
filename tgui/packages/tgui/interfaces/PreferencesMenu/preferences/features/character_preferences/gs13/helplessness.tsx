@@ -108,3 +108,9 @@ export const no_neck: Feature<number> = {
   description: 'At what weight do you become unable to wear items around your neck? 0 disables this.',
   component: FeatureNumberInput,
 };
+
+export const weak_lungs: Feature<number> = {
+  name: 'Weak lungs',
+  description: 'At what weight will you start requiring more oxygen to breathe? 0 disables this.',
+  component: FeatureNumberInput,
+};
