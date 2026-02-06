@@ -7025,6 +7025,7 @@
 #include "modular_gs\code\mechanics\muscle.dm"
 #include "modular_gs\code\mechanics\persistent_fat.dm"
 #include "modular_gs\code\mechanics\recipes.dm"
+#include "modular_gs\code\mechanics\water_sponge.dm"
 #include "modular_gs\code\mechanics\xwg.dm"
 #include "modular_gs\code\mobs\chocoslime.dm"
 #include "modular_gs\code\modules\atmospherics\gasmixtures\gas_types.dm"
