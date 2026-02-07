@@ -30,13 +30,13 @@
 /datum/reagent/water/proc/fat_hide(mob/living/carbon/user)
 	return volume * bloat_coeff
 
-/obj/machinery/shower/process()
+/obj/machinery/shower/process(seconds_per_tick)
 	..()
 	for(var/atom/movable/moveable_atom in loc)
 		if(iscarbon(moveable_atom))
 			if(HAS_TRAIT(moveable_atom, TRAIT_WATER_SPONGE))
 				var/mob/living/carbon/living = moveable_atom
-				living.reagents.add_reagent(/datum/reagent/water, 3)
+				living.reagents.add_reagent(/datum/reagent/water, 3 * seconds_per_tick)
 
 /obj/item/organ/lungs/Initialize(mapload)
 	. = ..()
@@ -48,6 +48,15 @@
 			var/gas_breathed = breathe_gas_volume(breath, /datum/gas/water_vapor)
 			if(gas_breathed > 0)
 				breather.reagents.add_reagent(/datum/reagent/water, gas_breathed)
+
+/datum/status_effect/fire_handler/wet_stacks/tick(seconds_between_ticks)
+	if (stacks <= 0)
+		return ..()
+	
+	if (HAS_TRAIT(owner, TRAIT_WATER_SPONGE))
+		owner.reagents.add_reagent(/datum/reagent/water, 3 * seconds_between_ticks)
+
+	return ..()
 
 // /obj/machinery/pool/controller/process_reagents()
 // 	for(var/turf/open/pool/W in linked_turfs)
