@@ -34,13 +34,13 @@ export const max_weight: Feature<number> = {
 export const weight_gain_persistent: FeatureToggle = {
   name: 'Persistent weight',
   description:
-    'Endround/cryo weight becomes your new start weight. This will override your starting fatness.',
+    'Toggle whether endround/cryo weight will become your new start weight. This will override your starting fatness.',
   component: CheckboxInput,
 };
 
 export const weight_gain_permanent: FeatureToggle = {
   name: 'Permanent weight',
-  description: 'Persists between round, hard to remove.',
+  description: 'Toggle whether you want to be affected by permanent weight; a special type of fatness that is persistent and impossibles to reemove using normal means.',
   component: CheckboxInput,
 };
 
