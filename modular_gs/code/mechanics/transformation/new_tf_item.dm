@@ -40,7 +40,7 @@
 /datum/component/carrier/soulcatcher/attachable/transformation/New()
 	. = ..()
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(try_to_capture))
-	RegisterSignal(parent, COMSIG_CLICK_ALT_SECONDARY, PROC_REF(try_to_capture))
+	RegisterSignal(parent, COMSIG_CLICK_ALT_SECONDARY, PROC_REF(toggle_tf))
 
 /// Toggles if the parent object will transform people or not
 /datum/component/carrier/soulcatcher/attachable/transformation/proc/toggle_tf(datum/source, mob/user)
@@ -89,11 +89,17 @@
 		to_chat(user, span_warning("The [parent] isn't close enough to [target_mob]"))
 		return
 
+	if(parent_item in target_mob.contents) //If holding and TFing yourself into it, drop it.
+		var/turf/current_tile = get_turf(parent_item)
+		parent_item.forceMove(current_tile)
+
 	if(!target_mob?.mind)
 		return
 
 	if(!target_room.add_soul_from_mind(target_mob.mind, FALSE))
 		return
+
+	scan_body(target_mob, user)
 
 	target_mob.forceMove(parent)
 	ADD_TRAIT(target_mob, TRAIT_STASIS, TRAIT_CARRIER)
@@ -131,6 +137,8 @@
 		var/obj/item/parent_item = parent
 		var/turf/drop_turf = get_turf(parent_item)
 		new /obj/item/portable_transmog (drop_turf)
+
+	qdel(src)
 
 
 /mob/living/soulcatcher_soul/proc/remove_body_from_carrier(mob/living/original_body)
