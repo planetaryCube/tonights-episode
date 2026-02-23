@@ -664,7 +664,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	attack_verb_continuous = list("bludgeons", "whacks", "disciplines", "thrashes")
 	attack_verb_simple = list("bludgeon", "whack", "discipline", "thrash")
 	//GS13 EDIT
-	var/amount = -1
+	var/fatness_slowdown_reduction = -1
 	//GS13 EDIT END
 
 /obj/item/cane/examine(mob/user, thats)
@@ -688,7 +688,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	//GS13 EDIT
 	var/mob/living/carbon/fatty = user
 	if(istype(fatty))
-		fatty.add_fat_delay_modifier("cane", amount)
+		fatty.add_fat_delay_modifier("cane", fatness_slowdown_reduction)
 	//GS13 EDIT END
 	return TRUE
 
@@ -721,7 +721,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	attack_verb_continuous = list("bludgeons", "whacks", "thrashes")
 	attack_verb_simple = list("bludgeon", "whack", "thrash")
 	//GS13 EDIT
-	amount = -2
+	fatness_slowdown_reduction = -2
 	//GS13 EDIT END
 
 /obj/item/cane/crutch/Initialize(mapload)
