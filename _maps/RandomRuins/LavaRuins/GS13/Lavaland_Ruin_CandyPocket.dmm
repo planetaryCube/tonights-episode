@@ -186,9 +186,6 @@
 /obj/structure/lollipop,
 /turf/open/indestructible/bubblegum,
 /area/ruin/unpowered)
-"V" = (
-/turf/template_noop,
-/area/space)
 "W" = (
 /obj/item/food/candyheart,
 /obj/effect/light_emitter/tendril,
@@ -380,7 +377,7 @@ r
 u
 "}
 (9,1,1) = {"
-V
+u
 r
 N
 a
