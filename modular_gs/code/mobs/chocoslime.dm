@@ -86,11 +86,10 @@
 	obj_damage = 0
 	melee_damage_lower = 0.001
 	melee_damage_upper = 0.001
-	faction = list("slime")
 	pass_flags = PASSTABLE
 	move_to_delay = 7
 	attack_sound = 'sound/items/eatfood.ogg'
-	faction = list(ROLE_WIZARD, FACTION_FEEDER)
+	faction = list(ROLE_WIZARD, FACTION_FEEDER, FACTION_SLIME)
 	unique_name = 1
 	gold_core_spawnable = HOSTILE_SPAWN
 	see_in_dark = 3
