@@ -132,7 +132,6 @@
 /area/lavaland/underground/xenoarch/candy_outpost
 	name = "Candyland Survey Post"
 	icon_state = "candyoutpost"
-	requires_power = TRUE
 
 /area/lavaland/underground/xenoarch/candyland
 	name = "Candyland"
