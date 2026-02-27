@@ -126,6 +126,12 @@
 	soundpath = 'modular_zubbers/code/modules/blooper/voice/bloopers/undertale/voice_papyrus.ogg'
 	minvariance = 0
 
+/datum/blooper/ralsei
+	name = "Ralsei"
+	id = "ralsei"
+	soundpath = 'modular_zubbers/code/modules/blooper/voice/bloopers/undertale/voice_ralsei.ogg'
+	minvariance = 0
+
 /datum/blooper/sans //real
 	name = "Sans"
 	id = "sans"
@@ -149,6 +155,12 @@
 	name = "Temmie"
 	id = "temmie"
 	soundpath = 'modular_zubbers/code/modules/blooper/voice/bloopers/undertale/voice_temmie.ogg'
+	minvariance = 0
+
+/datum/blooper/susie
+	name = "Susie"
+	id = "susie"
+	soundpath = 'modular_zubbers/code/modules/blooper/voice/bloopers/undertale/voice_susie.ogg'
 	minvariance = 0
 
 /datum/blooper/gaster
