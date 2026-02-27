@@ -32,3 +32,66 @@
 		custom_fatness = FALSE
 
 	return custom_fatness
+
+/// Returns the amount of fatness it would take to get to the next fatness stage
+/proc/get_weight_delta_positive(input_fatness)
+	if(input_fatness >= FATNESS_LEVEL_BLOB)
+		return 0 // We are already peak.
+
+	if(input_fatness > FATNESS_LEVEL_IMMOBILE)
+		return (FATNESS_LEVEL_BLOB - input_fatness)
+
+	if(input_fatness > FATNESS_LEVEL_BARELYMOBILE)
+		return (FATNESS_LEVEL_IMMOBILE - input_fatness)
+
+	if(input_fatness > FATNESS_LEVEL_EXTREMELY_OBESE)
+		return (FATNESS_LEVEL_BARELYMOBILE - input_fatness)
+
+	if(input_fatness > FATNESS_LEVEL_MORBIDLY_OBESE)
+		return (FATNESS_LEVEL_EXTREMELY_OBESE - input_fatness)
+
+	if(input_fatness > FATNESS_LEVEL_OBESE)
+		return (FATNESS_LEVEL_MORBIDLY_OBESE - input_fatness)
+
+	if(input_fatness > FATNESS_LEVEL_VERYFAT)
+		return (FATNESS_LEVEL_OBESE - input_fatness)
+
+	if(input_fatness > FATNESS_LEVEL_FATTER)
+		return (FATNESS_LEVEL_VERYFAT - input_fatness)
+
+	if(input_fatness > FATNESS_LEVEL_FAT)
+		return (FATNESS_LEVEL_FATTER - input_fatness)
+
+	return FATNESS_LEVEL_FAT - input_fatness
+
+/// Returns the amount of fatness it would take to get down to the previous fatness stage
+/proc/get_weight_delta_negative(input_fatness)
+	if(input_fatness > FATNESS_LEVEL_BLOB)
+		return input_fatness - FATNESS_LEVEL_BLOB // We are already peak.
+
+	if(input_fatness > FATNESS_LEVEL_IMMOBILE)
+		return (input_fatness - FATNESS_LEVEL_IMMOBILE)
+
+	if(input_fatness > FATNESS_LEVEL_BARELYMOBILE)
+		return (nput_fatness - FATNESS_LEVEL_BARELYMOBILE)
+
+	if(input_fatness > FATNESS_LEVEL_EXTREMELY_OBESE)
+		return (input_fatness - FATNESS_LEVEL_EXTREMELY_OBESE)
+
+	if(input_fatness > FATNESS_LEVEL_MORBIDLY_OBESE)
+		return (input_fatness - FATNESS_LEVEL_MORBIDLY_OBESE)
+
+	if(input_fatness > FATNESS_LEVEL_OBESE)
+		return (input_fatness - FATNESS_LEVEL_OBESE)
+
+	if(input_fatness > FATNESS_LEVEL_VERYFAT)
+		return (input_fatness - FATNESS_LEVEL_VERYFAT)
+
+	if(input_fatness > FATNESS_LEVEL_FATTER)
+		return (input_fatness - FATNESS_LEVEL_FATTER)
+
+	if(input_fatness > FATNESS_LEVEL_FAT)
+		return (input_fatness - FATNESS_LEVEL_FAT)
+
+	return input_fatness
+
