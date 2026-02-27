@@ -73,7 +73,7 @@
 		return (input_fatness - FATNESS_LEVEL_IMMOBILE)
 
 	if(input_fatness > FATNESS_LEVEL_BARELYMOBILE)
-		return (nput_fatness - FATNESS_LEVEL_BARELYMOBILE)
+		return (input_fatness - FATNESS_LEVEL_BARELYMOBILE)
 
 	if(input_fatness > FATNESS_LEVEL_EXTREMELY_OBESE)
 		return (input_fatness - FATNESS_LEVEL_EXTREMELY_OBESE)
