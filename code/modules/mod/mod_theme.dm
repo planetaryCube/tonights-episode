@@ -612,10 +612,7 @@
 		/obj/item/paper,
 		/obj/item/storage/bag/mail,
 	)
-	// GS13 EDIT adds the exosuit to the loader mod
-	// inbuilt_modules = list(/obj/item/mod/module/hydraulic, /obj/item/mod/module/clamp/loader, /obj/item/mod/module/magnet)
-	inbuilt_modules = list(/obj/item/mod/module/hydraulic, /obj/item/mod/module/clamp/loader, /obj/item/mod/module/magnet, /obj/item/mod/module/hydraulic_movement)
-	// GS13 END EDIT
+	inbuilt_modules = list(/obj/item/mod/module/hydraulic, /obj/item/mod/module/clamp/loader, /obj/item/mod/module/magnet)
 	variants = list(
 		"loader" = list(
 			/obj/item/clothing/head/mod = list(
