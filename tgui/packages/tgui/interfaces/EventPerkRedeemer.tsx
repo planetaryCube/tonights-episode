@@ -1,5 +1,5 @@
 // THIS IS A GS13 UI FILE
-import { Section, Table, Stack, Tooltip, Box } from 'tgui-core/components';
+import { Section, Table, Stack, Tooltip, Box, Button } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -8,20 +8,12 @@ type Data = {
     available_perks: Perk[];
 };
 
-type Item = {
-    name: string;
-    amount: string;
-};
-
-type ItemProp = {
-    item: Item;
-};
-
 type Perk = {
     name: string;
     description: string;
     items: string;
     expiry_date: Date;
+    available: boolean;
 };
 
 type PerkProps = {
@@ -45,26 +37,6 @@ const PerkNameAndDesc = (props: PerkProps) => {
     )
 };
 
-const PrintPerkItem = (props: ItemProp) => {
-    const {item} = props;
-    const {name} = item;
-
-    return(
-        name
-    );
-};
-
-const PerkItems = (props:ItemProp) => {
-    const { name, amount } = props.item;
-    // const { name } = item;
-
-    return (
-        <Box>
-        {name} {amount},
-        </Box>
-    );
-};
-
 const PerkExpiryDate = (props:PerkProps) => {
     const { expiry_date } = props.perk;
 
@@ -75,6 +47,7 @@ const PerkExpiryDate = (props:PerkProps) => {
 
 const PerkRow = (props: PerkProps) => {
     const { perk } = props;
+    const { act } = useBackend<Data>();
 
     return (
     <Table.Row className="candystripe">
@@ -89,10 +62,16 @@ const PerkRow = (props: PerkProps) => {
             <Stack>
                 <Stack.Item>
                 {perk.items}
-                {/* {perk.items.map(item => <PerkItems item = {item}/>)} */}
-                {/* <PerkItems perk = {perk}/> */}
                 </Stack.Item>
             </Stack>
+        </Table.Cell>
+        <Table.Cell>
+            <Button 
+            disabled = {!perk.available}
+            onClick={() => act("redeem_perk", {name: perk.name})}
+            >
+                Redeem
+            </Button>
         </Table.Cell>
     </Table.Row>
     );

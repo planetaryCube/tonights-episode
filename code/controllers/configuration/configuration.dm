@@ -122,6 +122,9 @@
 	populate_interaction_instances()
 	remove_erp_things()
 	// SKYRAT EDIT ADDITION END
+	// GS13 EDIT
+	populate_event_perks()
+	//GS13 END EDIT
 
 	loaded = TRUE
 
