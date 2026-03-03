@@ -27,9 +27,10 @@ const PerkNameAndDesc = (props: PerkProps) => {
         <Tooltip content={description} position="bottom-start">
         <Box
             inline
-            // style={{borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',}}
             >
-            {"<span style = \"border-Bottom: 2px dotted rgba(255, 255, 255, 0.8)\">" + name + "</span>"}
+            <span style={{borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',}}>
+            {name}
+            </span>
         </Box>
         </Tooltip>
     ) : (
@@ -42,7 +43,7 @@ const PerkRow = (props: PerkProps) => {
     const { act } = useBackend<Data>();
 
     return (
-    <Table.Row className="candystripe">
+    <Table.Row className="candystripe" >
         <Table.Cell verticalAlign="middle">
             <Stack>
                 <Stack.Item>
@@ -81,7 +82,10 @@ export const EventPerkRedeemer = (props) => {
         <Section
         scrollable
         fill>
-        <Table>
+        <Table style={{
+        borderCollapse: "separate",
+        borderSpacing: "0 12px",
+        }}>
             <Table.Row header>
                 <Table.Cell>Name</Table.Cell>
                 <Table.Cell>Items</Table.Cell>
