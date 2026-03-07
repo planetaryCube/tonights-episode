@@ -17,6 +17,7 @@
 	name = "fattening weapon lens"
 	select_name = "fatten"
 	projectile_type = /obj/projectile/beam/fattening
+	harmful = FALSE
 
 ///The base projectile used by the fatoray
 /obj/projectile/beam/fattening
