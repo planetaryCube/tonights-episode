@@ -32,6 +32,22 @@
 	cell = new /obj/item/stock_parts/power_store/cell/high
 	update_appearance()
 
+/obj/item/gun/medbeam/caloray/infinite_cell
+	name = "infinite capacity caloray"
+
+/obj/item/gun/medbeam/caloray/infinite_cell/Initialize(mapload)
+	. = ..()
+	cell = new /obj/item/stock_parts/power_store/cell/infinite
+	update_appearance()
+
+/obj/item/gun/medbeam/caloray/bluespace_cell
+	name = "bluespace cell caloray"
+
+/obj/item/gun/medbeam/caloray/bluespace_cell/Initialize(mapload)
+	. = ..()
+	cell = new /obj/item/stock_parts/power_store/cell/bluespace
+	update_appearance()
+
 /obj/item/gun/medbeam/caloray/examine(mob/user)
 	. = ..()
 
@@ -187,6 +203,9 @@
 
 /obj/effect/ebeam/caloray
 	name = "caloray beam"
+
+/obj/item/gun/medbeam/caloray/mid_los_check(atom/movable/user, mob/target, pass_args, turf/next_step, obj/dummy)
+	return TRUE
 
 //////////////////////////////Mech Version///////////////////////////////
 /obj/item/gun/medbeam/caloray/mech
