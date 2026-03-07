@@ -217,21 +217,6 @@
 	pred_plush = TRUE
 	prey_plush = FALSE
 	can_eat_food = TRUE
-	/*
-	// copy pasting from [modular_skyrat/modules/modular_items/lewd_items/code/lewd_items/kinky_shocker.dm]
-	/// If the shocker is on or not
-	var/shocker_on = FALSE
-	/// Typecasted var that holds the cell placed in the shocker
-	var/obj/item/stock_parts/power_store/cell/cell
-	/// A type of what cell should be put in the shocker on initialize
-	var/preload_cell_type = null
-	/// What it should cost the cell to use the shocker once
-	var/cell_hit_cost = STANDARD_CELL_CHARGE * 0.015
-	/// If the user should be able to remove the cell or not
-	var/can_remove_cell = TRUE
-	/// The custom part of the string that is displayed on activation of the shocker
-	var/activate_sound = "sparks"
-	*/
 	/// shocker to handle the SHOCKING behavior
 	var/obj/item/kinky_shocker/shocker
 
@@ -287,4 +272,13 @@
 	stuffed_icon_state = "balian_stuffed"
 	pred_plush = TRUE
 	prey_plush = FALSE
+	can_eat_food = TRUE
+
+/obj/item/toy/plush/gs13/remmy
+	name = "Clueless Dragon Plushie"
+	desc = "Now back in style with 100% more fur!"
+	icon_state = "remmy"
+	stuffed_icon_state = "remmy_stuffed"
+	pred_plush = TRUE
+	prey_plush = TRUE
 	can_eat_food = TRUE

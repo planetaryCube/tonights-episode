@@ -98,3 +98,6 @@
 	name = "Scholarly Badger plush"
 	item_path = /obj/item/toy/plush/gs13/balian
 
+/datum/loadout_item/toys/plush/remmy_plush
+	name = "Clueless Dragon Plush"
+	item_path = /obj/item/toy/plush/gs13/remmy
