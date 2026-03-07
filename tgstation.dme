@@ -7125,6 +7125,7 @@
 #include "modular_gs\code\modules\vending\wardrobes.dm"
 #include "modular_gs\code\modules\vore\absorb_fatness.dm"
 #include "modular_gs\code\modules\vore\mob.dm"
+#include "modular_gs\code\modules\vore\show_weight.dm"
 #include "modular_gs\code\modules\vore\weight_gain.dm"
 #include "modular_gs\code\modules\voting\vote.dm"
 #include "modular_gs\code\modules\weapons\grenades.dm"

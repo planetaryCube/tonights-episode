@@ -118,6 +118,7 @@
 	aggro_vision_range = 9
 	turns_per_move = 5
 	blood_volume = 0
+	digestion_fat_yield = 1500
 	gold_core_spawnable = HOSTILE_SPAWN
 	digestion_fat_yield = 1500
 	butcher_results = list(/obj/item/food/icecreamsandwich = 4)
@@ -132,7 +133,6 @@
 	hitsound_wall = 'sound/items/weapons/tap.ogg'
 	reflectable = FALSE
 	light_range = 0
-	digestion_fat_yield = 1500
 	var/food_per_feeding = 5
 	var/food_fed = /datum/reagent/consumable/nutriment
 	var/fullness_add = 30

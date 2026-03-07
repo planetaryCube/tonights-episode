@@ -94,4 +94,3 @@
 		return (input_fatness - FATNESS_LEVEL_FAT)
 
 	return input_fatness
-
