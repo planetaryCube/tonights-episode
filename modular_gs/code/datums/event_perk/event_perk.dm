@@ -175,13 +175,48 @@ GLOBAL_DATUM(event_perk_tgui_holder, /datum/event_perk)
 
 // -----------------------ADMIN SHIT--------------------------------
 
+/datum/event_perk_maker/proc/create_perk(name, description, items, ckeys, expiry_date)
+	var/datum/event_perk/new_perk = new()
+	new_perk.name = name
+	new_perk.description = description
+	new_perk.items = format_item_list(items)
+	new_perk.ckeys = format_ckey_list(ckeys)
+	new_perk.expiry_date = expiry_date
+
+
+/datum/event_perk_maker/proc/format_item_list(items)
+	var/list/items_list = list()
+	return items_list
+
+/datum/event_perk_maker/proc/format_ckey_list(ckeys)
+	var/list/ckeys_list = list()
+	return ckeys_list
+
 /datum/event_perk_maker/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "EventPerkMaker")
 		ui.open()
 
-/* for merge, let's make sure we ain't breaking shit
+/datum/event_perk_maker/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/event_perk_maker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if (.)
+		return .
+
+	switch(action)
+		if ("create_perk")
+			var/name = params["name"]
+			var/description = params["description"]
+			var/items = params["items"]
+			var/ckeys = params["ckeys"]
+			var/expiry_date = params["expiry_date"]
+			create_perk(name, description, items, ckeys, expiry_date)
+
+	update_static_data(usr)
+
 /datum/admins
 	var/datum/event_perk_maker/event_perk_maker
 
@@ -192,4 +227,3 @@ ADMIN_VERB(event_perk_maker, R_ADMIN, "Event Perk Maker", "Create a new Event Pe
 		user.holder.event_perk_maker = panel
 	panel.ui_interact(user.mob)
 	BLACKBOX_LOG_ADMIN_VERB("Event Perk Maker")
-*/
