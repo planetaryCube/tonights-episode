@@ -123,3 +123,9 @@ GLOBAL_LIST_INIT(plaswood_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/plaswood/five
 	amount = 5
+
+/obj/item/stack/sheet/mineral/gold/five
+	amount = 5
+
+/obj/item/stack/sheet/mineral/titanium/five
+	amount = 5
