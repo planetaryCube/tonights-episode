@@ -1,9 +1,14 @@
 // THIS IS A GS13 UI FILE
-import { Section, Stack, Input, Button } from 'tgui-core/components';
+import { Section, Stack, Input, Button, TextArea } from 'tgui-core/components';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+
+type Data = {
+    items: String[];
+    ckeys: String[];
+};
 
 type NewPerkData = {
     name: string;
@@ -15,65 +20,97 @@ type NewPerkData = {
 
 export const EventPerkMaker = (props) => {
     const { act } = useBackend<NewPerkData>();
+    const { data } = useBackend<Data>();
+    const {items, ckeys} = data;
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [ckeys, setCkeys] = useState('');
-    const [items, setItems] = useState('');
+    const [ckey, setCkey] = useState('');
+    const [item, setItem] = useState('');
+    const [itemAmount, setItemAmount] = useState('');
     const [expiryDate, setExpiryDate] = useState('');
+
     return(
-        <Window title={'Create a new perk'} width={200} height={500}>
+        <Window title={'Create a new perk'} width={300} height={380}>
         <Window.Content>
         <Section>
-        <Stack>
+        <Stack vertical fill>
             <Stack.Item>
-                Name:
+                Name:<br/>
                 <Input 
                 maxLength={100}
                 value = {name}
-                placeholder="Name..."
+                placeholder="Name of the event perk"
                 onChange={setName}
+                width = {15}
                 />
             </Stack.Item>
             <Stack.Item>
-                Description:
+                Description:<br/>
+                <TextArea
+                    fluid
+                    value = {description}
+                    placeholder="Description of the event perk"
+                    onChange={setDescription}
+                    height = {10}
+                />
+            </Stack.Item>
+            <Stack.Item>
+                Items:<br/>
+                <ul>
+                    {items.map((current_item) => (<li>{current_item}</li>))}
+                </ul>
                 <Input 
-                value = {description}
-                placeholder="Description..."
-                onChange={setDescription}
+                value = {item}
+                placeholder="Item path"
+                onChange={setItem}
+                width = {15}
                 />
-            </Stack.Item>
-            <Stack.Item>
-                Items:
                 <Input 
-                value = {items}
-                placeholder="Items..."
-                onChange={setItems}
+                value = {itemAmount}
+                placeholder="Amount"
+                onChange={setItemAmount}
+                width = {4}
                 />
+                <Button
+                disabled = {item.trim().length == 0 || itemAmount.trim().length == 0}
+                onClick={() => act("add_item", {item: item,
+                                                item_amount: itemAmount})}
+                >
+                    Add
+                </Button>
             </Stack.Item>
             <Stack.Item>
-                Ckeys:
+                Ckeys:<br/>
+                <ul>
+                    {ckeys.map((current_ckey) => (<li>{current_ckey}</li>))}
+                </ul>
                 <Input 
-                value = {ckeys}
-                placeholder="Ckeys..."
-                onChange={setCkeys}
+                value = {ckey}
+                placeholder="Ckey..."
+                onChange={setCkey}
+                width = {15}
                 />
+                <Button 
+                disabled = {ckey.trim().length == 0}
+                onClick={() => act("add_ckey", {ckey: ckey})}>
+                    Add
+                </Button>
             </Stack.Item>
             <Stack.Item>
-                Expiry date:
+                Expiry date:<br/>
                 <Input 
                 value = {expiryDate}
+                maxLength={8}
                 placeholder="Expiry date..."
                 onChange={setExpiryDate}
+                width = {15}
                 />
             </Stack.Item>
             <Stack.Item>
             <Button
-            // disabled = {!perk.available}
             onClick={() => act("create_perk", {name: name, 
                                             description: description,
-                                            items: items,
-                                            ckeys: ckeys,
                                             expiry_date: expiryDate})}
             >
                 Submit

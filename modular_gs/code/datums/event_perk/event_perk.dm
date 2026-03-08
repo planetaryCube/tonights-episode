@@ -1,5 +1,8 @@
 #define EVENT_PERK_JSON_FOLDER	"data/event_perks/"
 
+#define CAN_REDEEM TRUE
+#define CAN_NOT_REDEEM FALSE
+
 GLOBAL_LIST_EMPTY_TYPED(event_perk_instances, /datum/event_perk)
 GLOBAL_DATUM(event_perk_tgui_holder, /datum/event_perk)
 
@@ -9,7 +12,7 @@ GLOBAL_DATUM(event_perk_tgui_holder, /datum/event_perk)
 	var/description = ""
 	/// list of items delivered to the player, and their amount
 	var/list/items = list()
-	/// list of ckeys that can redeem this particular perk. also stores if any particular ckey can redeem a perk this round
+	/// list of ckeys that can redeem this particular perk. also stores if any particular ckey can redeem a perk this round - TRUE means it can be redeemed, FALSE means it can't
 	var/list/ckeys = list()
 	/// date when the perk expires. String in a DDMMYYYY format
 	var/expiry_date = 0
@@ -19,7 +22,7 @@ GLOBAL_DATUM(event_perk_tgui_holder, /datum/event_perk)
 	var/expired = FALSE
 
 /datum/event_perk/proc/redeem()
-	ckeys[usr.ckey] = FALSE
+	ckeys[usr.ckey] = CAN_NOT_REDEEM
 	for (var/item in items)
 		var/amount = items[item]
 		for(var/i in 1 to amount)
@@ -79,7 +82,7 @@ GLOBAL_DATUM(event_perk_tgui_holder, /datum/event_perk)
 		src.items[item_path] = item_amount
 
 	for (var/ckey in ckeys)
-		ckeys[ckey] = TRUE
+		ckeys[ckey] = CAN_REDEEM
 
 	return TRUE
 
@@ -175,14 +178,17 @@ GLOBAL_DATUM(event_perk_tgui_holder, /datum/event_perk)
 
 // -----------------------ADMIN SHIT--------------------------------
 
-/datum/event_perk_maker/proc/create_perk(name, description, items, ckeys, expiry_date)
+/datum/event_perk_maker
+	var/list/items = list()
+	var/list/ckeys = list()
+
+/datum/event_perk_maker/proc/create_perk(name, description, expiry_date)
 	var/datum/event_perk/new_perk = new()
 	new_perk.name = name
 	new_perk.description = description
-	new_perk.items = format_item_list(items)
-	new_perk.ckeys = format_ckey_list(ckeys)
+	new_perk.items = items
+	new_perk.ckeys = ckeys
 	new_perk.expiry_date = expiry_date
-
 
 /datum/event_perk_maker/proc/format_item_list(items)
 	var/list/items_list = list()
@@ -201,6 +207,30 @@ GLOBAL_DATUM(event_perk_tgui_holder, /datum/event_perk)
 /datum/event_perk_maker/ui_state(mob/user)
 	return GLOB.always_state
 
+/datum/event_perk_maker/ui_static_data(mob/user)
+	. = ..()
+
+	var/list/data = list()
+	data["items"] = list()
+	data["ckeys"] = list()
+
+	for (var/item in items)
+		var/obj/item/current_item = new item
+		var/item_string = "[current_item.name] x[items[item]]"
+		UNTYPED_LIST_ADD(data["items"], item_string)
+		qdel(current_item)
+
+	for (var/ckey in ckeys)
+		UNTYPED_LIST_ADD(data["ckeys"], ckey)
+
+	return data
+
+
+/datum/event_perk_maker/ui_close(mob/user)
+	. = ..()
+	items.RemoveAll(items)
+	ckeys.RemoveAll(ckeys)
+
 /datum/event_perk_maker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if (.)
@@ -210,10 +240,17 @@ GLOBAL_DATUM(event_perk_tgui_holder, /datum/event_perk)
 		if ("create_perk")
 			var/name = params["name"]
 			var/description = params["description"]
-			var/items = params["items"]
-			var/ckeys = params["ckeys"]
 			var/expiry_date = params["expiry_date"]
-			create_perk(name, description, items, ckeys, expiry_date)
+			create_perk(name, description, expiry_date)
+		if ("add_item")
+			var/item = text2path(params["item"])
+			var/amount = params["item_amount"]
+			items.Add(item)
+			items[item] = amount
+		if ("add_ckey")
+			var/ckey = params["ckey"]
+			ckeys.Add(ckey)
+			ckeys[ckey] = CAN_REDEEM
 
 	update_static_data(usr)
 
@@ -227,3 +264,6 @@ ADMIN_VERB(event_perk_maker, R_ADMIN, "Event Perk Maker", "Create a new Event Pe
 		user.holder.event_perk_maker = panel
 	panel.ui_interact(user.mob)
 	BLACKBOX_LOG_ADMIN_VERB("Event Perk Maker")
+
+#undef CAN_REDEEM
+#undef CAN_NOT_REDEEM
