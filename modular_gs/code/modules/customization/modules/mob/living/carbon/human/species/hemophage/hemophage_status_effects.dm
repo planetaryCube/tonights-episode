@@ -23,13 +23,10 @@
 	if(!ishuman(victim))
 		return
 
-	// for(var/datum/status_effect/status in src.status_effects)
 	var/datum/status_effect/blood_thirst_satiated/blood_thirst_satiated = locate() in src.status_effects
 	if (isnull(blood_thirst_satiated))
 		return
-		// if(istype(status, /datum/status_effect/blood_thirst_satiated))
 
-			// var/datum/status_effect/blood_thirst_satiated/blood_thirst_satiated = status
 	blood_thirst_satiated.times_fed += 1
 
 	var/client_mult = BLOOD_DRAIN_MULTIPLIER_CKEY_GS
