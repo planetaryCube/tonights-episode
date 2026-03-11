@@ -31,7 +31,7 @@
 /datum/supply_pack/materials/material_starter
 	name = "Material Starter Crate"
 	desc = "A set of basic materials required to 'jumpstart' station set-up. Bluespace crystals and calorite not included."
-	cost = CARGO_CRATE_VALUE * 2 + 7050
+	cost = (CARGO_CRATE_VALUE * 2) + 7050
 	contains = list(
 		/obj/item/stack/sheet/iron/twenty,
 		/obj/item/stack/sheet/glass/fifty,
