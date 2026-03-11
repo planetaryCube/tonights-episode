@@ -120,7 +120,6 @@
 	blood_volume = 0
 	digestion_fat_yield = 1500
 	gold_core_spawnable = HOSTILE_SPAWN
-	digestion_fat_yield = 1500
 	butcher_results = list(/obj/item/food/icecreamsandwich = 4)
 
 /obj/projectile/beam/fattening/icecream //might as well make use of this thing to not make ton of different variants of the same thing
