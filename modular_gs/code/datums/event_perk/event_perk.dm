@@ -101,6 +101,13 @@ GLOBAL_DATUM(event_perk_tgui_holder, /datum/event_perk)
 	json_file.save()
 	qdel(json_file)
 
+/datum/event_perk/proc/copy(var/datum/event_perk/perk)
+	src.name = perk.name
+	src.description = perk.description
+	src.expiry_date = perk.expiry_date
+	src.items = perk.items.Copy()
+	src.ckeys = perk.ckeys.Copy()
+
 /datum/event_perk/ui_state(mob/user)
 	return GLOB.always_state
 
@@ -216,9 +223,16 @@ ADMIN_VERB(event_perk_maker, R_ADMIN, "Event Perk Maker", "Create a new Event Pe
 	new_perk.ckeys = src.ckeys.Copy(src.ckeys)
 	new_perk.expiry_date = expiry_date
 
-	GLOB.event_perk_instances.Add(new_perk)
-
-	new_perk.save_to_json()
+	var/overriden_perk = FALSE
+	for (var/datum/event_perk/perk in GLOB.event_perk_instances)
+		if (perk.name == new_perk.name)
+			overriden_perk = TRUE
+			perk.copy(new_perk)
+			perk.save_to_json()
+	
+	if (!overriden_perk)
+		GLOB.event_perk_instances.Add(new_perk)
+		new_perk.save_to_json()
 
 	src.items.RemoveAll(items)
 	src.ckeys.RemoveAll(ckeys)
@@ -249,8 +263,13 @@ ADMIN_VERB(event_perk_maker, R_ADMIN, "Event Perk Maker", "Create a new Event Pe
 
 	for (var/item in items)
 		var/obj/item/current_item = new item
-		var/item_string = "[current_item.name] x[items[item]]"
-		UNTYPED_LIST_ADD(data["items"], item_string)
+		var/item_name = current_item.name
+		var/item_amount = items[item]
+		var/list/list_entry = list(
+			"name" = item_name, 
+			"amount" = item_amount
+			)
+		UNTYPED_LIST_ADD(data["items"], list_entry)
 		qdel(current_item)
 
 	for (var/ckey in ckeys)
@@ -277,12 +296,31 @@ ADMIN_VERB(event_perk_maker, R_ADMIN, "Event Perk Maker", "Create a new Event Pe
 		if ("add_item")
 			var/item = text2path(params["item"])
 			var/amount = text2num(params["item_amount"])
-			if (isnull(item) || isnull(amount))
+
+			if (isnull(item))
 				return
+			
+			if (isnull(amount))
+				amount = 1
+
 			items[item] = amount
 		if ("add_ckey")
 			var/ckey = ckey(params["ckey"])
+
+			if (isnull(ckey))
+				return
+
 			ckeys[ckey] = CAN_REDEEM
+		if ("remove_item")
+			var/item_name = params["item"]
+			for (var/item in items)
+				var/atom/current_item = item
+				if (current_item::name == item_name)
+					items.Remove(item)
+					break
+		if ("remove_ckey")
+			var/ckey = params["ckey"]
+			ckeys.Remove(ckey)
 
 	update_static_data(usr)
 

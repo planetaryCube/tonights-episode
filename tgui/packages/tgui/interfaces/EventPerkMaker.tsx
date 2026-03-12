@@ -1,13 +1,28 @@
 // THIS IS A GS13 UI FILE
 import { Section, Stack, Input, Button, TextArea, Tooltip } from 'tgui-core/components';
 import { useState } from 'react';
+import type {JSX} from 'react'
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type Data = {
-    items: string[];
+    items: item[];
     ckeys: string[];
+};
+
+type item = {
+    name: string;
+    amount: number;
+};
+// you don't understand how angry this clown of a language is making me
+// no, it cannot accept a string as an input to a function like a normal
+// fucking language
+// nooooooooooooooooo you have to put everything into shitty fucking wrappers
+// because fuck being normal, right? this is js, we have to be fucking clowns
+// now here, come and put on your makeup.
+type ckeyProp = {
+    ckey: string;
 };
 
 type NewPerkData = {
@@ -56,6 +71,37 @@ export const EventPerkMaker = (props) => {
         setCkey("");
     };
 
+    const ItemEntry = (item: item) => {
+        return(
+            <li key={item.name}>
+                {item.name}, x{item.amount}
+                {"    "}
+                <Button 
+                color="red"
+                onClick={() => (act("remove_item", {item: item.name}))}
+                >
+                    Remove
+                </Button>
+            </li>
+        );
+    };
+
+    const CkeyEntry = (ckeyProp: ckeyProp): JSX.Element => {
+        const { ckey } = ckeyProp;
+        return(
+            <li>
+                {ckey}
+                {"    "}
+                <Button 
+                color="red"
+                onClick={() => (act("remove_ckey", {ckey: ckey}))}
+                >
+                    Remove
+                </Button>
+            </li>
+        );
+    };
+
     return(
         <Window title={'Create a new perk'} width={300} height={500}>
         <Window.Content scrollable>
@@ -93,7 +139,9 @@ export const EventPerkMaker = (props) => {
                 </Tooltip>
                 <br/>
                 <ul>
-                    {items.map((current_item) => (<li key={current_item}>{current_item}</li>))}
+                    {items.map((current_item) => (
+                    <ItemEntry {...current_item} />
+                    ))}
                 </ul>
                 <Input 
                 value = {item}
@@ -108,7 +156,7 @@ export const EventPerkMaker = (props) => {
                 width = {4}
                 />
                 <Button
-                disabled = {item.trim().length === 0 || itemAmount.trim().length === 0}
+                disabled = {item.trim().length === 0}
                 onClick={submit_item}
                 >
                     Add
@@ -126,7 +174,9 @@ export const EventPerkMaker = (props) => {
                 </Tooltip>
                 <br/>
                 <ul>
-                    {ckeys.map((current_ckey) => (<li key={current_ckey}>{current_ckey}</li>))}
+                    {ckeys.map((current_ckey) => (
+                    <CkeyEntry key = {current_ckey} ckey = {current_ckey}/>
+                    ))}
                 </ul>
                 <Input 
                 value = {ckey}
