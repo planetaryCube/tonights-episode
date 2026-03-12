@@ -234,8 +234,21 @@ ADMIN_VERB(event_perk_maker, R_ADMIN, "Event Perk Maker", "Create a new Event Pe
 		GLOB.event_perk_instances.Add(new_perk)
 		new_perk.save_to_json()
 
+
+	var/list/logging_data = list(
+		"name" = new_perk.name,
+		"description" = new_perk.description,
+		"items" = new_perk.items,
+		"ckeys" = new_perk.ckeys,
+		"expiry_date" = new_perk.expiry_date,
+	)
+	log_admin("[key_name(usr)] has [overriden_perk ? "overriden" : "created"] perk [new_perk.name].", logging_data)
+
 	src.items.RemoveAll(items)
 	src.ckeys.RemoveAll(ckeys)
+
+	if (overriden_perk)
+		qdel(new_perk)
 
 /datum/event_perk_maker/proc/format_item_list(items)
 	var/list/items_list = list()

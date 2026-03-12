@@ -140,7 +140,7 @@ export const EventPerkMaker = (props) => {
                 <br/>
                 <ul>
                     {items.map((current_item) => (
-                    <ItemEntry {...current_item} />
+                    <ItemEntry key = {current_item.name} {...current_item} />
                     ))}
                 </ul>
                 <Input 
