@@ -186,7 +186,7 @@
 
 /obj/item/toy/plush/gs13/swan
 	name = "Swan plush"
-	desc = "An adorable plushie of everyone's beloved waterbird. It seems angry; either at it's holder not going to sleep at a reasonable hour, or them not reporting problems in the right places."
+	desc = "An adorable plushie of everyone's beloved waterbird. Now with an equippable hat!"
 	icon_state = "swan"
 	var/brim = FALSE
 
@@ -209,3 +209,76 @@
 		icon_state = "swan-brim"
 		brim = TRUE
 	return TRUE
+
+/obj/item/toy/plush/gs13/voltz
+	name = "Battery dragon plushie"
+	desc = "A large and soft plushie depicting the prince of rexora-3 in a more marketable form. Though it doesn't explain why there's a battery slot in the back, or why the horns are metal..."
+	icon_state = "voltz"
+	pred_plush = TRUE
+	prey_plush = FALSE
+	can_eat_food = TRUE
+	/// shocker to handle the SHOCKING behavior
+	var/obj/item/kinky_shocker/shocker
+
+/obj/item/toy/plush/gs13/voltz/examine(mob/user)
+	. = ..()
+	if(shocker.cell)
+		. += span_notice("\The [src] is [round(shocker.cell.percent())]% charged.")
+	else
+		. += span_warning("\The [src] does not have a power source installed.")
+
+/obj/item/toy/plush/gs13/voltz/Initialize(mapload)
+	. = ..()
+	shocker = new /obj/item/kinky_shocker
+	shocker.preload_cell_type = null
+	shocker.cell = null
+
+/obj/item/toy/plush/gs13/voltz/attackby(obj/item/item, mob/living/user, list/modifiers, list/attack_modifiers)
+	. = ..()
+	. = shocker.attackby(item, user, modifiers, attack_modifiers)
+
+/obj/item/toy/plush/gs13/voltz/click_alt(mob/user)
+	var/obj/item/stock_parts/power_store/cell/cell = shocker.cell
+	if(!(cell))
+		return
+	cell.update_appearance()
+	cell.forceMove(get_turf(src))
+	shocker.cell = null
+	to_chat(user, span_notice("You remove the cell from [src]."))
+	shocker.shocker_on = FALSE
+	// update_appearance()
+	return CLICK_ACTION_SUCCESS
+
+/obj/item/toy/plush/gs13/voltz/attack_self(mob/user)
+	. = shocker.attack_self(user)
+
+/obj/item/toy/plush/gs13/voltz/attack(mob/living/target_mob, mob/living/user, list/modifiers, list/attack_modifiers)
+	. = ..()
+	. = shocker.attack(target_mob, user, modifiers, attack_modifiers)
+
+/obj/item/toy/plush/gs13/blake
+	name = "Friendly Lizard"
+	desc = "This version is known to try and be friends with all the others plushes."
+	icon_state = "blake"
+	stuffed_icon_state = "blake_stuffed"
+	pred_plush = TRUE
+	prey_plush = TRUE
+	can_eat_food = TRUE
+
+/obj/item/toy/plush/gs13/balian
+	name = "Scholarly Badger Plushie"
+	desc = "This professorial plush would look right at home sat behind a lectern; though you worry he'd start on a three hour lecture on the history of the Roman Empire. Unless you distract him with cake first. Lots of cake."
+	icon_state = "balian"
+	stuffed_icon_state = "balian_stuffed"
+	pred_plush = TRUE
+	prey_plush = FALSE
+	can_eat_food = TRUE
+
+/obj/item/toy/plush/gs13/remmy
+	name = "Clueless Dragon Plushie"
+	desc = "Now back in style with 100% more fur!"
+	icon_state = "remmy"
+	stuffed_icon_state = "remmy_stuffed"
+	pred_plush = TRUE
+	prey_plush = TRUE
+	can_eat_food = TRUE

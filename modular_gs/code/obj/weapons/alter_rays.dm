@@ -15,7 +15,11 @@
 /obj/item/gun/energy/laser/alter_ray/gainrate
 	name = "AL-T-Ray: Metabolism"
 	desc = "This weapon is capable of altering one's body capabilities. This model appears to be capable of altering one's weight gain and loss rate by 10%."
-	ammo_type = list(/obj/item/ammo_casing/energy/laser/gainrate_decrease, /obj/item/ammo_casing/energy/laser/gainrate_increase, /obj/item/ammo_casing/energy/laser/lossrate_decrease, /obj/item/ammo_casing/energy/laser/lossrate_increase)
+	ammo_type = list(
+		/obj/item/ammo_casing/energy/laser/alter_ray/gainrate_decrease,
+		/obj/item/ammo_casing/energy/laser/alter_ray/gainrate_increase,
+		/obj/item/ammo_casing/energy/laser/alter_ray/lossrate_decrease,
+		/obj/item/ammo_casing/energy/laser/alter_ray/lossrate_increase)
 
 
 // /obj/item/gun/energy/laser/alter_ray/assbreasts //genius name, I know
@@ -99,19 +103,22 @@
 	return FALSE
 
 //ammo casings - these are needed to allow guns to switch between firing modes
-/obj/item/ammo_casing/energy/laser/gainrate_increase
+/obj/item/ammo_casing/energy/laser/alter_ray
+	harmful = FALSE
+
+/obj/item/ammo_casing/energy/laser/alter_ray/gainrate_increase
 	projectile_type = /obj/projectile/beam/alter_ray/gain_rate/increase
 	select_name = "Weight Gain Increase"
 
-/obj/item/ammo_casing/energy/laser/gainrate_decrease
+/obj/item/ammo_casing/energy/laser/alter_ray/gainrate_decrease
 	projectile_type = /obj/projectile/beam/alter_ray/gain_rate/decrease
 	select_name = "Weight Gain Decrease"
 
-/obj/item/ammo_casing/energy/laser/lossrate_increase
+/obj/item/ammo_casing/energy/laser/alter_ray/lossrate_increase
 	projectile_type = /obj/projectile/beam/alter_ray/loss_rate/increase
 	select_name = "Weight Loss Increase"
 
-/obj/item/ammo_casing/energy/laser/lossrate_decrease
+/obj/item/ammo_casing/energy/laser/alter_ray/lossrate_decrease
 	projectile_type = /obj/projectile/beam/alter_ray/loss_rate/decrease
 	select_name = "Weight Loss Decrease"
 
@@ -122,9 +129,9 @@
 /obj/item/gun/energy/laser/alter_ray/noloss
 	name = "AL-T-Ray: Reverser"
 	desc = "This weapon is capable of altering one's body capabilities. This one reverse's ones body functions, to make it so weight loss results in weight gain. Getting hit again will return the target's metabolism to normal, until hit again."
-	ammo_type = list(/obj/item/ammo_casing/energy/laser/lossrate_reverse)
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/alter_ray/lossrate_reverse)
 
-/obj/item/ammo_casing/energy/laser/lossrate_reverse
+/obj/item/ammo_casing/energy/laser/alter_ray/lossrate_reverse
 	projectile_type = /obj/projectile/beam/alter_ray/lossrate_reverse
 	select_name = "Weight Loss Reverse"
 

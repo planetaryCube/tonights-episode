@@ -5,6 +5,7 @@
 	id = SPECIES_LIZARD
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
+		TRAIT_COLD_BLOODED,		// GS13 EDIT: mark lizards as cold blooded for the cold blooded quirk
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	mutant_bodyparts = list("body_markings" = "None", "legs" = "Normal Legs") // SKYRAT EDIT CHANGE - ORIGINAL: body_markings = list(/datum/bodypart_overlay/simple/body_marking/lizard = "None")
