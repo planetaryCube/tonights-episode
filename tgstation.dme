@@ -7043,6 +7043,7 @@
 #include "modular_gs\code\modules\atmospherics\gasmixtures\reactions.dm"
 #include "modular_gs\code\modules\atmospherics\machinery\components\gas_recipe_machines\atmos_machine_recipes.dm"
 #include "modular_gs\code\modules\atmospherics\machinery\portable\canister.dm"
+#include "modular_gs\code\modules\berry\clothing\collar.dm"
 #include "modular_gs\code\modules\bitrunning\virtual_domain\domains\calorite_temple.dm"
 #include "modular_gs\code\modules\bloopers\bark_list.dm"
 #include "modular_gs\code\modules\borg\feeding_tools.dm"

@@ -8,6 +8,7 @@
 #define BURST_CONFIRM "Yes, Kaboom!"
 #define BURST_ABORT "Abort bursting"
 #define BURST_DELAY_SECONDS 300
+#define BURST_TIME_TO_BURST 7 SECONDS
 
 #define BLUEBERRY_SPILL_BELLY "<span class='warning'>You feel a wetness spread on your belly as juice leaks out of your belly button!</span>"
 #define BLUEBERRY_SPILL_PENIS "<span class='warning'>You feel your cock tingle as it leaks out juice!</span>"
@@ -253,7 +254,7 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 	var/safe_popping = client?.prefs?.read_preference(/datum/preference/toggle/safe_bursting)
 	playsound(loc, pick(GLOB.blueberry_burst), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = TRUE)
 
-	if (!do_after(src, 7 SECONDS, src))
+	if(!do_after(src, BURST_TIME_TO_BURST, src))
 		return
 	// Make a puddle of the late berries contents
 	var/liquid_to_spill = reagents.get_reagent_amount(/datum/reagent/blueberry_juice)
@@ -268,13 +269,39 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 	playsound(loc, BLUEBBERY_BURST_SOUND, BLUEBERRY_INFLATION_VOLUME * 1.5, 1, 1, 1.2, ignore_walls = TRUE)
 	qdel(smoke)
 
+	if(safe_popping)
+		return
 
-	if(!safe_popping)
-		var/leave_gibs = client?.prefs?.read_preference(/datum/preference/toggle/bursting_leave_gibs)
-		if(leave_gibs)
-			gib(DROP_ALL_REMAINS)
-		else
-			gib(DROP_ITEMS)
+	var/leave_gibs = client?.prefs?.read_preference(/datum/preference/toggle/bursting_leave_gibs)
+	blueberry_gib(leave_gibs)
+
+/// Modified version of the gib proc that doesn't give the same mood debuff and also removes them from the round.
+/mob/living/carbon/proc/blueberry_gib(leave_remains)
+	ghostize(FALSE) // We want them out of the body before anything else.
+
+	for(var/obj/item/dropped_item in src) // Need to do this, otherwise the items will be sent to cryo.
+		if(dropItemToGround(dropped_item))
+			if(prob(50))
+				step(dropped_item, pick(GLOB.alldirs))
+
+	var/atom/our_drop_location = drop_location()
+	for(var/mob/dropped_mob in src)
+		dropped_mob.forceMove(our_drop_location)
+		visible_message(span_danger("[dropped_mob] bursts out of [src]!"))
+
+	// Having a custom animation for bursting would be cool.
+	var/prev_lying = lying_angle
+	if(!prev_lying && leave_remains)
+		gib_animation()
+
+	if(leave_remains)
+		spill_organs(DROP_ALL_REMAINS)
+		spawn_gibs(DROP_ALL_REMAINS)
+		spread_bodyparts(DROP_ALL_REMAINS)
+
+	// We are stuffing them in the fucking vore cryopod.
+	remove_player_from_round_safely(src)
+
 
 /**
  * Spawn a streak or puddle of juice on the floor of a carbon.
