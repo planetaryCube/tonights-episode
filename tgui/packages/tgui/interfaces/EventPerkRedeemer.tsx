@@ -153,7 +153,7 @@ export const EventPerkRedeemer = (props) => {
                 <Table.Cell>Name</Table.Cell>
                 <Table.Cell>Items</Table.Cell>
                 {data.admin_mode ? (<Table.Cell>Ckeys</Table.Cell>) : ''}
-                <Table.Cell width = "100px">Expiry date</Table.Cell>
+                <Table.Cell width = "100px">Expiry date (DD.MM.YYYY)</Table.Cell>
             </Table.Row>
             {available_perks.map((current_perk) => (
                 <PerkRow key = {current_perk.name} perk={current_perk} />
