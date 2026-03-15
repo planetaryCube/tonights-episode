@@ -63,6 +63,10 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 	"<span class='danger'>The juice... it's getting...</span>"
 	))
 
+/mob/living/carbon
+	/// How many times have we bursted?
+	var/times_blueberry_bursted = 0
+
 /datum/reagent/blueberry_juice
 	name = "Blueberry Juice"
 	description = "Totally infectious."
@@ -156,7 +160,21 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 
 	if(HAS_TRAIT(berry, TRAIT_ABOUT_TO_BURST) || HAS_TRAIT(berry, TRAIT_NO_BURST)) // Skip burst stuff if it already triggered or if the berry can't burst
 		return
-	var/relative_fullness = berry.reagents.get_reagent_amount(/datum/reagent/blueberry_juice)/berry?.client?.prefs?.read_preference(/datum/preference/numeric/helplessness/blueberry_max_before_burst)
+
+	var/juice_amount_before_burst = berry?.client?.prefs?.read_preference(/datum/preference/numeric/helplessness/blueberry_max_before_burst)
+	if(!juice_amount_before_burst)
+		return
+
+	var/relative_fullness = berry.reagents.get_reagent_amount(/datum/reagent/blueberry_juice)/juice_amount_before_burst
+	if((relative_fullness > 0.8) && !HAS_TRAIT(berry, TRAIT_WARNED_ABOUT_BURSTING))
+		ADD_TRAIT(berry, TRAIT_WARNED_ABOUT_BURSTING, TRAUMA_TRAIT)
+		to_chat(span_warning("The pressure is growing too intense, you might burst soon."), berry) // Warn them.
+		return
+
+	if(HAS_TRAIT(berry, TRAIT_WARNED_ABOUT_BURSTING) && (relative_fullness < 0.5))
+		REMOVE_TRAIT(berry, TRAIT_WARNED_ABOUT_BURSTING, TRAUMA_TRAIT)
+		return
+
 	if(relative_fullness > 1)
 		if (SPT_PROB(relative_fullness * 15, seconds_per_tick)) // When you're at your limit, you have a chance of bursting every second, increading with how far over capacity you are.
 			if (!berry.check_prefs_in_view(/datum/preference/toggle/see_bursting, berry.loc))
@@ -227,6 +245,10 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
  * Initiates the burst popup. Giving the player the choice between bursting or delaying.
  */
 /mob/living/carbon/proc/trigger_burst()
+	if(client?.prefs?.read_preference(/datum/preference/toggle/automatic_burst)) // This is on you.
+		burst()
+		return
+
 	ADD_TRAIT(src, TRAIT_ABOUT_TO_BURST, TRAUMA_TRAIT)
 	addtimer(TRAIT_CALLBACK_REMOVE(src, TRAIT_ABOUT_TO_BURST, TRAUMA_TRAIT), BURST_DELAY_SECONDS SECONDS)
 	var/list/buttons = list(BURST_DELAY, BURST_IMMEDIATELY)
@@ -251,7 +273,6 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
  * Burst the carbon. Depending on the players prefs, this will cause the character to also Gib and die.
  */
 /mob/living/carbon/proc/burst()
-	var/safe_popping = client?.prefs?.read_preference(/datum/preference/toggle/safe_bursting)
 	playsound(loc, pick(GLOB.blueberry_burst), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = TRUE)
 
 	if(!do_after(src, BURST_TIME_TO_BURST, src))
@@ -268,8 +289,15 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 	smoke.start()
 	playsound(loc, BLUEBBERY_BURST_SOUND, BLUEBERRY_INFLATION_VOLUME * 1.5, 1, 1, 1.2, ignore_walls = TRUE)
 	qdel(smoke)
+	var/safe_popping = client?.prefs?.read_preference(/datum/preference/toggle/safe_bursting)
+	var/safe_bursts_allowed = client?.prefs?.read_preference(/datum/preference/numeric/helplessness/blueberry_lives)
+	var/bursts_left = safe_bursts_allowed - times_blueberry_bursted
 
-	if(safe_popping)
+	if(safe_popping || (safe_bursts_allowed && bursts_left))
+		if(bursts_left == 1)
+			to_chat(span_boldwarning("You can't keep this up. Next time you burst, you are done for!")) // Warn them of what might happen if they aren't careful.
+
+		times_blueberry_bursted += 1
 		return
 
 	var/leave_gibs = client?.prefs?.read_preference(/datum/preference/toggle/bursting_leave_gibs)
