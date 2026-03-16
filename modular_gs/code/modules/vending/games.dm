@@ -35,6 +35,7 @@
 				/obj/item/toy/plush/gs13/voltz = 3,
 				/obj/item/toy/plush/gs13/blake = 3,
 				/obj/item/toy/plush/gs13/balian = 3,
+				/obj/item/toy/plush/gs13/remmy = 3,
 			)
 		)
 	)
