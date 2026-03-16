@@ -31,20 +31,13 @@
 /datum/supply_pack/materials/material_starter
 	name = "Material Starter Crate"
 	desc = "A set of basic materials required to 'jumpstart' station set-up. Bluespace crystals and calorite not included."
-	cost = CARGO_CRATE_VALUE * 22
+	cost = (CARGO_CRATE_VALUE * 2) + 7050
 	contains = list(
 		/obj/item/stack/sheet/iron/twenty,
 		/obj/item/stack/sheet/glass/fifty,
-		/obj/item/stack/sheet/mineral/titanium, //no presets for 5 titaniums or golds I'm afraid
-		/obj/item/stack/sheet/mineral/titanium,
-		/obj/item/stack/sheet/mineral/titanium,
-		/obj/item/stack/sheet/mineral/titanium,
-		/obj/item/stack/sheet/mineral/gold,
-		/obj/item/stack/sheet/mineral/gold,
-		/obj/item/stack/sheet/mineral/gold,
-		/obj/item/stack/sheet/mineral/gold,
+		/obj/item/stack/sheet/mineral/titanium/five,
+		/obj/item/stack/sheet/mineral/gold/five,
 		/obj/item/stack/sheet/mineral/uranium/five,
-		/obj/item/stack/sheet/mineral/plasma/five,
 		/obj/item/stack/sheet/mineral/diamond,
 
 	)
