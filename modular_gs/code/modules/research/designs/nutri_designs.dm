@@ -90,7 +90,6 @@
 	category = list(RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MEDICAL)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
-/*
 
 /datum/design/cyberimp_nutriment_turbo
 	name = "Nutriment Pump Implant TURBO"
@@ -113,8 +112,6 @@
 	build_path = /obj/item/organ/cyberimp/chest/mobility
 	category = list(RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_MISC)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
-*/
-
 
 /datum/design/cookie_synthesizer
 	name = "Cookie Synthesizer"
