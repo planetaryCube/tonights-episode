@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/kink_collar/locked/antiburst
-	name = "water-tight field generator collar"
-	desc = "A collar that prevents accidental bursting."
+	name = "WT field generator collar" // coder item name, if you think of something better, PR it in.
+	desc = "A collar that prevents accidental bursting by generating a water-tight field."
 	icon_state = "/obj/item/clothing/neck/kink_collar/locked/antiburst"
 	post_init_icon_state = "gps"
 	greyscale_config = /datum/greyscale_config/collar/gps

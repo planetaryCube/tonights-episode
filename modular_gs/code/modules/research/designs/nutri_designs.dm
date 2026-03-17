@@ -79,6 +79,17 @@
 	category = list(RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MEDICAL)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_SERVICE | DEPARTMENT_BITFLAG_ENGINEERING
 
+/datum/design/berry_collar
+	name = "WT field generator collar"
+	desc = "A collar that prevents accidental bursting by generating a water-tight field."
+	id = "blueberry_field_collar"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT *0.5, /datum/material/calorite = SHEET_MATERIAL_AMOUNT *0.5, /datum/material/bluespace = SHEET_MATERIAL_AMOUNT *0.25)
+	construction_time = 75
+	build_path = /obj/item/clothing/neck/kink_collar/locked/antiburst
+	category = list(RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MEDICAL)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
+
 /*
 
 /datum/design/cyberimp_nutriment_turbo

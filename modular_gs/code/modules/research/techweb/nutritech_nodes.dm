@@ -19,7 +19,8 @@
 		// "borg_upgrade_feedingtube",
 		// "ci-fatmobility",
 		"bluespace_collar_receiver",
-		"bluespace_collar_transmitter"
+		"bluespace_collar_transmitter",
+		"blueberry_field_collar",
 		)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	required_items_to_unlock = list(
