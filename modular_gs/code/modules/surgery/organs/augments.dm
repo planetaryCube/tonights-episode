@@ -13,6 +13,7 @@
 	name = "Mobility Nanite Core"
 	desc = "This implant contains nanites that reinforce leg muscles, allowing for unimpeded movement at extreme weights."
 	icon_state = "chest_implant"
+	slot = ORGAN_SLOT_MOBILITY
 
 /obj/item/organ/cyberimp/chest/mobility/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
 	..()

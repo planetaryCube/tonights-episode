@@ -72,7 +72,7 @@ export const bursting_leave_gibs: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const automatic_burst: FeatureToggle = {
+export const automatic_bursting: FeatureToggle = {
   name: 'Uncontrollable Bursting',
   description:
     'Toggles your control over bursting. If safe bursting is disabled, this can lead to accidental premature ends for RPs. Use with caution.',
