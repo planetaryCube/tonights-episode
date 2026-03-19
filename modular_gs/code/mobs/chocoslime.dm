@@ -1,7 +1,7 @@
 
 /datum/ai_controller/basic_controller/feedermob
 	blackboard = list(
-		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic/feedermob,
 		BB_TARGET_MINIMUM_STAT = UNCONSCIOUS,
 		BB_EMOTE_KEY = "glunk",
 		BB_EMOTE_CHANCE = 40,
@@ -16,6 +16,13 @@
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 	)
+
+/datum/targeting_strategy/basic/feedermob/can_attack(mob/living/living_mob, atom/the_target, vision_range)
+	. = ..()
+	if isanimal_or_basicmob(the_target)
+		return FALSE
+	
+	return .
 
 /mob/living/simple_animal/hostile/feed
 	var/food_per_feeding = 5
@@ -79,11 +86,10 @@
 	obj_damage = 0
 	melee_damage_lower = 0.001
 	melee_damage_upper = 0.001
-	faction = list("slime")
 	pass_flags = PASSTABLE
 	move_to_delay = 7
 	attack_sound = 'sound/items/eatfood.ogg'
-	faction = list(ROLE_WIZARD, FACTION_FEEDER)
+	faction = list(ROLE_WIZARD, FACTION_FEEDER, FACTION_SLIME)
 	unique_name = 1
 	gold_core_spawnable = HOSTILE_SPAWN
 	see_in_dark = 3
@@ -91,6 +97,7 @@
 	// lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	lighting_cutoff = LIGHTING_CUTOFF_LOW
 	initial_language_holder = /datum/language_holder/slime
+	digestion_fat_yield = 1500
 	// vore_flags = DEVOURABLE | DIGESTABLE | FEEDING
 
 //Creambeast - basically a bit tougher mob that has feeding ranged attacks
@@ -117,8 +124,9 @@
 	aggro_vision_range = 9
 	turns_per_move = 5
 	blood_volume = 0
+	digestion_fat_yield = 1500
 	gold_core_spawnable = HOSTILE_SPAWN
-	butcher_results = list(/obj/item/food/icecream = 4)
+	butcher_results = list(/obj/item/food/icecreamsandwich = 4)
 
 /obj/projectile/beam/fattening/icecream //might as well make use of this thing to not make ton of different variants of the same thing
 	name = "ice cream blob"

@@ -54,6 +54,10 @@ ADMIN_VERB(cancel_shuttle, R_ADMIN, "Cancel Shuttle", "Recall the shuttle, regar
 	if(tgui_alert(user, "You sure?", "Confirm", list("Yes", "No")) != "Yes")
 		return
 	SSshuttle.admin_emergency_no_recall = FALSE
+	// GS13 EDIT allows admins to recall voted shuttles
+	SSshuttle.emergency_no_recall = FALSE
+	SSshuttle.endvote_passed = FALSE
+	// GS13 END EDIT
 	SSshuttle.emergency.cancel()
 	BLACKBOX_LOG_ADMIN_VERB("Cancel Shuttle")
 	log_admin("[key_name(user)] admin-recalled the emergency shuttle.")
