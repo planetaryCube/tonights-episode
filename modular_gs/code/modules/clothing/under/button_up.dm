@@ -6,7 +6,7 @@
 	greyscale_colors = "#FFFFFF#FFFFFF#FFFFFF"
 
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-	icon = 'modular_gs/icons/mob/modclothes/button_up.dmi'
+	icon = 'modular_gs/icons/obj/clothing/modclothes/button_up.dmi'
 	icon_state = "button_up_preview"
 	worn_icon_state = "button_up"
 	worn_icon_digi = 'modular_gs/icons/mob/modclothes/dual_tone_suit_digi.dmi'
