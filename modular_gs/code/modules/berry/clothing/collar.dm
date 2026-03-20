@@ -7,7 +7,7 @@
 	greyscale_config_worn = /datum/greyscale_config/collar/gps/worn
 	greyscale_config_inhand_left = /datum/greyscale_config/collar/gps/lefthand
 	greyscale_config_inhand_right = /datum/greyscale_config/collar/gps/righthand
-	greyscale_colors = "#8B96B7#505665"
+	greyscale_colors = "#0B2A8F#0A0F1D"
 	resistance_flags = FIRE_PROOF | UNACIDABLE // It's made for containing walking biohazards, of course it's 100% acid proof.
 	/// The default signaller code of the toy
 	var/code = 2
