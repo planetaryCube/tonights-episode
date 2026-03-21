@@ -5,12 +5,12 @@
 	modular_icon_location = 'modular_gs/icons/mob/modclothes/button_up.dmi'
 	greyscale_colors = "#FFFFFF#FFFFFF#FFFFFF"
 
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+	supports_variations_flags = CLOTHING_DIGITIGRADE_MASK
 	icon = 'modular_gs/icons/obj/clothing/modclothes/button_up.dmi'
 	icon_state = "button_up_preview"
 	worn_icon_state = "button_up"
-	worn_icon_digi = 'modular_gs/icons/mob/modclothes/dual_tone_suit_digi.dmi'
-	worn_icon_taur_snake = 'modular_gs/icons/mob/modclothes/dual_tone_suit_taur_snake.dmi'
+	// worn_icon_digi = 'modular_gs/icons/mob/modclothes/dual_tone_suit_digi.dmi'
+	worn_icon_taur_snake = 'modular_gs/icons/mob/modclothes/button_up_taur_snake.dmi'
 	post_init_icon_state = "button_up"		// but why does it have to be this way
 
 	armor_type = /datum/armor/clothing_under
@@ -37,7 +37,7 @@
 
 /datum/greyscale_config/button_up/worn/taur/snake
 	name = "Button Up Suit (Worn)(Taur)(Snake)"
-	icon_file = 'modular_gs/icons/mob/modclothes/button_up.dmi'
+	icon_file = 'modular_gs/icons/mob/modclothes/button_up_taur_snake.dmi'
 
 /obj/item/clothing/under/dual_tone/button_up/add_modular_overlay(mob/living/carbon/user, modular_icon, modular_layer, sprite_color, organ_slot)
 	var/list/suit_colors = SSgreyscale.ParseColorString(greyscale_colors)
@@ -54,6 +54,8 @@
 
 	var/obj/item/organ/genital/organ = user.get_organ_slot(organ_slot)
 	var/color = organ.bodypart_overlay.draw_color
+	if (islist(color))
+		color = color[1]
 
 	mod_overlay = mutable_appearance(modular_icon_location, (modular_icon + "-4"), -(modular_layer))
 	mod_overlay.color = color

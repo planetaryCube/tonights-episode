@@ -6,7 +6,7 @@
 			"icon" = "shield",
 			"products" = list(
 				/obj/item/clothing/under/color/grey/security = 3,
-				/obj/item/clothing/under/color/dual_tone/security/red = 3,
+				/obj/item/clothing/under/dual_tone/security = 3,
 				),
 			),
 	)
