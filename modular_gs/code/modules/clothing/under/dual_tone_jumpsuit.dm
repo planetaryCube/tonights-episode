@@ -1,5 +1,5 @@
 /obj/item/clothing/under/dual_tone
-	name = "White dual tone jumpsuit"
+	name = "White dual tone jumpsuit (modular)"
 	desc = "A dual tone colored jumpsuit. Check those stripes out baby!"
 
 	modular_icon_location = 'modular_gs/icons/mob/modclothes/dual_tone_suit.dmi'

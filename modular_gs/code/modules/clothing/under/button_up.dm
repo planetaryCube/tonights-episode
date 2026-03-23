@@ -1,6 +1,6 @@
 /obj/item/clothing/under/dual_tone/button_up
-	name = "Button up shirt"
-	desc = "some desc"
+	name = "Button up shirt (modular)"
+	desc = "A buttoned up shirt. Made by GATO to be particularly stretchy."
 
 	modular_icon_location = 'modular_gs/icons/mob/modclothes/button_up.dmi'
 	greyscale_colors = "#FFFFFF#FFFFFF#FFFFFF"
@@ -9,7 +9,7 @@
 	icon = 'modular_gs/icons/obj/clothing/modclothes/button_up.dmi'
 	icon_state = "button_up_preview"
 	worn_icon_state = "button_up"
-	// worn_icon_digi = 'modular_gs/icons/mob/modclothes/dual_tone_suit_digi.dmi'
+	worn_icon_digi = 'modular_gs/icons/mob/modclothes/button_up_digi.dmi'
 	worn_icon_taur_snake = 'modular_gs/icons/mob/modclothes/button_up_taur_snake.dmi'
 	post_init_icon_state = "button_up"		// but why does it have to be this way
 
@@ -33,7 +33,7 @@
 
 /datum/greyscale_config/button_up/worn/digi
 	name = "Button Up Suit (Worn)(Digi)"
-	icon_file = 'modular_gs/icons/mob/modclothes/button_up.dmi'
+	icon_file = 'modular_gs/icons/mob/modclothes/button_up_digi.dmi'
 
 /datum/greyscale_config/button_up/worn/taur/snake
 	name = "Button Up Suit (Worn)(Taur)(Snake)"
