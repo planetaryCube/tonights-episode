@@ -5,7 +5,7 @@
 	modular_icon_location = 'modular_gs/icons/mob/modclothes/button_up.dmi'
 	greyscale_colors = "#FFFFFF#FFFFFF#FFFFFF"
 
-	supports_variations_flags = CLOTHING_DIGITIGRADE_MASK
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	icon = 'modular_gs/icons/obj/clothing/modclothes/button_up.dmi'
 	icon_state = "button_up_preview"
 	worn_icon_state = "button_up"
