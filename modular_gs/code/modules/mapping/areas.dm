@@ -194,7 +194,7 @@
 	name = "\improper Lower Level Dormitories"
 
 /area/ruin/space/has_grav/speedfucking
-	name = "Speed dating hotel"
+	name = "Speed Dating Hotel"
 	icon = 'modular_gs/icons/turf/areas.dmi'
 	icon_state = "xenogen"
 	power_light = TRUE
