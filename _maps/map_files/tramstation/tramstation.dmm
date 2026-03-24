@@ -32308,12 +32308,12 @@
 /turf/open/floor/iron/dark,
 /area/station/medical/storage)
 "kiN" = (
-/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
 	},
 /obj/machinery/firealarm/directional/west,
 /obj/machinery/light/cold/directional/north,
+/obj/machinery/self_actualization_device,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "kiT" = (
