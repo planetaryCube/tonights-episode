@@ -260,25 +260,25 @@
 //weapon prefabs
 
 /obj/item/melee/curator_whip/fattening
-	name = "calorite-lined whip"
+	name = "Calorite Whip"
 	desc = "The whip seems to glisten with an orange gleam inbetween its threads."
-	icon = 'modular_gs/icons/obj/weapons/fat_whip.dmi'
-	icon_state = "calorite"
+	icon = 'modular_gs/icons/obj/weapons/fat_weapons.dmi'
+	icon_state = "calorite_whip"
 	damtype = FAT
 	force = 40
 
 /obj/item/melee/curator_whip/permafattening
-	name = "galbanic whip"
-	desc = "The whip's threads glisten with a sinister red gleam."
-	icon = 'modular_gs/icons/obj/weapons/fat_whip.dmi'
-	icon_state = "galbanic"
+	name = "Galbanic Whip"
+	desc = "The whip's threads glisten with a sinister red gleam, infused with the finest powers of perma-fattening."
+	icon = 'modular_gs/icons/obj/weapons/fat_weapons.dmi'
+	icon_state = "galbanic_whip"
 	damtype = PERMA_FAT
-	force = 20
+	force = 30
 
 /obj/item/gavelhammer/fattening
-	desc = "Some madman managed to create a weapon out of calorite... Luckily, it has a rubber handle for you to wield."
 	name = "Calorite Hammer"
-	icon = 'modular_gs/icons/obj/weapons/calorite_hammer.dmi'
+	desc = "Some madman managed to create a weapon out of calorite... Luckily, it has a rubber handle for you to wield."
+	icon = 'modular_gs/icons/obj/weapons/fat_weapons.dmi'
 	// lefthand_file = 'modular_gs/icons/mob/inhands/melee_lefthand_64.dmi'	//files are in, but the sprites aren't aligned well at the time of writing this
 	// righthand_file = 'modular_gs/icons/mob/inhands/melee_righthand_64.dmi'
 	icon_state = "calorite_hammer"
@@ -287,10 +287,32 @@
 	force = 60
 
 /obj/item/gavelhammer/permafattening
-	desc = "Destroyer of waistlines. It is infused with the finest powers of long-term fattening."
 	name = "Galbanic Hammer"
-	icon = 'modular_gs/icons/obj/weapons/calorite_hammer.dmi'
-	icon_state = "permafat_hammer"
+	desc = "Destroyer of waistlines. It is infused with the finest powers of long-term fattening."
+	icon = 'modular_gs/icons/obj/weapons/fat_weapons.dmi'
+	icon_state = "galbanic_hammer"
 	damtype = PERMA_FAT
 	throwforce = 10
 	force = 20
+
+
+//i'm ngl these don't work :/ (putting in the sprites just in case)
+/obj/item/gavelhammer/loss
+	name = "Lipolicidic Mace"
+	desc = "Harmless. Beneficial, in fact: this mace might be able to slim people that it hits."
+	icon = 'modular_gs/icons/obj/weapons/fat_weapons.dmi'
+	// lefthand_file = 'modular_gs/icons/mob/inhands/melee_lefthand_64.dmi'	//files are in, but the sprites aren't aligned well at the time of writing this
+	// righthand_file = 'modular_gs/icons/mob/inhands/melee_righthand_64.dmi'
+	icon_state = "macarenic_mace"
+	damtype = FAT
+	throwforce = 0
+	force = 0
+
+/obj/item/gavelhammer/permaloss
+	name = "Macarenic Mace"
+	desc = "Get it? Mace-arenic? Haha."
+	icon = 'modular_gs/icons/obj/weapons/fat_weapons.dmi'
+	icon_state = "lipolicide_mace"
+	damtype = PERMA_FAT
+	throwforce = 0
+	force = 0
