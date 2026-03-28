@@ -9,9 +9,6 @@
 	integrity_failure = 25
 	layer = OBJ_LAYER
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3)
-
-	// var/buildstacktype = /obj/item/stack/sheet/iron
-	// var/buildstackamount = 3
 	//stores the weight of the last person to step on in Lbs
 	var/lastreading = 0
 	/// What datum are we using to track weight?
@@ -24,9 +21,6 @@
 	return TRUE
 
 /obj/structure/scale/atom_deconstruct(disassembled)
-	// if(buildstacktype)
-	// 	new buildstacktype(loc,buildstackamount)
-	// else
 	for(var/datum/material/mat as anything in custom_materials)
 		new mat.sheet_type(loc, FLOOR(custom_materials[mat] / SHEET_MATERIAL_AMOUNT, 1))
 
