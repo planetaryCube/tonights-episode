@@ -317,7 +317,6 @@
 	else
 		icon = 'icons/hud/64x16_actions.dmi'
 	//GS13 EDIT END
-
 	icon_state = "[ui_name]_palette"
 
 /atom/movable/screen/button_palette/proc/activate_landing()

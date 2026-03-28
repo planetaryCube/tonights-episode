@@ -239,9 +239,6 @@
 #define COLOR_THEME_TRASENKNOX "#3ce375"
 #define COLOR_THEME_DETECTIVE "#c7b08b"
 #define COLOR_THEME_BLUE98 "#7d8dab" // Bubber Addition
-//GS13 EDIT
-#define COLOR_THEME_GATO "#ff79ff"
-//GS13 EDIT END
 
 ///Colors for eigenstates
 #define COLOR_PERIWINKLEE "#9999FF"
