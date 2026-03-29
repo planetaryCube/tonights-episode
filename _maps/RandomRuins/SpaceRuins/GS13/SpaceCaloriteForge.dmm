@@ -1,0 +1,84 @@
+"aO" = (/obj/structure/wall_torch/spawns_lit/directional/east,/turf/open/water/hot_spring,/area/ruin/space)
+"aR" = (/obj/structure/girder/displaced,/obj/structure/lattice,/obj/item/stack/sheet/mineral/titanium,/turf/open/misc/asteroid,/area/ruin/space)
+"bI" = (/obj/structure/mineral_door/calorite,/turf/open/floor/wood,/area/ruin/space)
+"dl" = (/obj/machinery/door/airlock/shuttle,/turf/open/floor/mineral/titanium/tiled/blue/airless,/area/ruin/space)
+"ev" = (/obj/machinery/power/shuttle_engine/propulsion/right{dir = 8},/turf/closed/wall/mineral/titanium,/area/ruin/space)
+"eO" = (/obj/structure/flora/tree/jungle/small/style_5,/turf/open/floor/grass,/area/ruin/space)
+"ft" = (/turf/open/floor/grass,/area/ruin/space)
+"gK" = (/obj/structure/dresser,/turf/open/floor/wood,/area/ruin/space)
+"hi" = (/turf/closed/wall/mineral/iron,/area/ruin/space)
+"hw" = (/obj/structure/flora/rock/pile/jungle,/turf/open/floor/grass,/area/ruin/space)
+"ix" = (/obj/structure/statue/calorite/pillar,/turf/open/floor/mineral/calorite/dance,/area/ruin/space)
+"iA" = (/obj/structure/flora/tree/jungle/small/style_6,/turf/open/floor/grass,/area/ruin/space)
+"iH" = (/turf/closed/wall/mineral/wood,/area/ruin/space)
+"ji" = (/obj/structure/bed/maint,/turf/open/floor/wood,/area/ruin/space)
+"jP" = (/turf/open/floor/wood,/area/ruin/space)
+"ls" = (/obj/structure/wall_torch/spawns_lit/directional/west,/turf/open/misc/asteroid,/area/ruin/space)
+"lB" = (/turf/closed/wall/mineral/titanium,/area/ruin/space)
+"lY" = (/obj/effect/decal/bigfatsigil,/turf/open/misc/asteroid,/area/ruin/space)
+"mM" = (/obj/structure/chair/comfy/shuttle{dir = 4},/obj/effect/decal/cleanable/blood/trail{dir = 8},/turf/open/floor/mineral/titanium/tiled/blue/airless,/area/ruin/space)
+"oy" = (/obj/item/shard/titanium,/turf/open/misc/asteroid,/area/ruin/space)
+"pZ" = (/obj/structure/wall_torch/spawns_lit/directional/north,/turf/open/misc/asteroid,/area/ruin/space)
+"qy" = (/obj/structure/flora/bush/flowers_br,/turf/open/floor/grass,/area/ruin/space)
+"qR" = (/obj/item/stack/sheet/mineral/titanium,/turf/open/floor/grass,/area/ruin/space)
+"sU" = (/obj/item/stack/sheet/mineral/calorite/ten,/turf/open/floor/mineral/calorite/dance,/area/ruin/space)
+"tB" = (/obj/structure/flora/rock/pile/style_2,/obj/structure/wall_torch/spawns_lit/directional/north,/turf/open/misc/asteroid,/area/ruin/space)
+"vv" = (/obj/structure/reagent_water_basin,/turf/open/floor/wood,/area/ruin/space)
+"vB" = (/obj/structure/grille/broken,/obj/effect/decal/cleanable/blood/trail{dir = 8},/turf/open/floor/mineral/titanium/tiled/blue/airless,/area/ruin/space)
+"vF" = (/obj/structure/flora/bush/flowers_pp/style_3,/turf/open/floor/grass,/area/ruin/space)
+"wg" = (/obj/structure/girder/displaced,/obj/structure/lattice,/turf/open/misc/asteroid,/area/ruin/space)
+"xE" = (/turf/open/floor/mineral/calorite/dance,/area/ruin/space)
+"yg" = (/obj/structure/reagent_crafting_bench,/turf/open/floor/wood,/area/ruin/space)
+"yy" = (/turf/template_noop,/area/template_noop)
+"yQ" = (/obj/structure/reagent_forge,/turf/open/floor/wood,/area/ruin/space)
+"zx" = (/obj/structure/chair/comfy/shuttle{dir = 4},/turf/open/floor/mineral/titanium/tiled/blue/airless,/area/ruin/space)
+"Ad" = (/obj/structure/flora/grass/jungle/a/style_2,/turf/open/floor/grass,/area/ruin/space)
+"AP" = (/obj/structure/flora/bush/flowers_pp,/turf/open/floor/grass,/area/ruin/space)
+"Ba" = (/obj/structure/flora/tree/jungle/small/style_4,/turf/open/floor/grass,/area/ruin/space)
+"Bb" = (/obj/structure/flora/grass/jungle/a/style_5,/turf/open/floor/grass,/area/ruin/space)
+"CF" = (/obj/structure/flora/rock,/turf/open/misc/asteroid,/area/ruin/space)
+"Ey" = (/obj/structure/window/calorite/fulltile,/obj/structure/grille,/turf/open/floor/plating,/area/ruin/space)
+"Gu" = (/obj/effect/mob_spawn/corpse/human/scientist,/obj/effect/decal/cleanable/blood/trail_holder{dir = 8},/turf/open/misc/asteroid,/area/ruin/space)
+"Gv" = (/obj/structure/table/wood,/obj/item/clothing/suit/hooded/techpriest,/turf/open/floor/wood,/area/ruin/space)
+"Hh" = (/obj/item/stack/ore/calorite,/turf/open/misc/asteroid/airless,/area/ruin/space)
+"HM" = (/obj/structure/flora/grass/jungle/a/style_4,/turf/open/floor/grass,/area/ruin/space)
+"JV" = (/obj/structure/mineral_door/wood,/turf/open/floor/wood,/area/ruin/space)
+"Ld" = (/turf/open/misc/asteroid,/area/ruin/space)
+"LK" = (/turf/open/water/hot_spring,/area/ruin/space)
+"Nn" = (/obj/structure/closet/crate/grave/skeleton,/turf/open/floor/grass,/area/ruin/space)
+"NC" = (/obj/structure/wall_torch/directional/north,/turf/open/misc/asteroid,/area/ruin/space)
+"NP" = (/turf/closed/wall/mineral/calorite,/area/ruin/space)
+"Ob" = (/obj/item/stack/ore/calorite,/turf/open/misc/asteroid,/area/ruin/space)
+"OQ" = (/obj/item/stack/ore/calorite,/turf/open/floor/grass,/area/ruin/space)
+"PT" = (/turf/open/misc/asteroid/airless,/area/ruin/space)
+"QU" = (/obj/structure/flora/rock/pile/style_3,/obj/structure/wall_torch/spawns_lit/directional/west,/turf/open/misc/asteroid,/area/ruin/space)
+"QW" = (/turf/closed/mineral/asteroid,/area/ruin/space)
+"Rz" = (/obj/item/stack/sheet/mineral/titanium,/obj/structure/wall_torch/spawns_lit/directional/south,/turf/open/floor/grass,/area/ruin/space)
+"Ul" = (/obj/structure/statue/calorite/fatty/huge,/turf/open/floor/mineral/calorite/dance,/area/ruin/space)
+"Un" = (/obj/structure/reagent_anvil,/obj/item/gavelhammer/fattening,/turf/open/floor/wood,/area/ruin/space)
+"Vh" = (/obj/structure/flora/rock/pile/jungle/style_2,/turf/open/floor/grass,/area/ruin/space)
+"VG" = (/obj/item/stack/ore/calorite,/turf/closed/mineral/asteroid,/area/ruin/space)
+"Xd" = (/obj/item/stack/sheet/mineral/titanium,/turf/open/misc/asteroid,/area/ruin/space)
+
+(1,1,1) = {"
+yyyyyyyyyyyyQWQWQWQWQWQWQWyyyyyyyyyyyyyy
+yyyyyyyyyyQWVGQWQWQWQWQWQWQWQWyyyyyyyyyy
+yyyyyyyyQWQWQWQWNPNPNPNPNPQWQWQWyyyyyyyy
+yyyyyyQWQWQWQWNPNPixUlixNPNPQWQWQWyyyyyy
+yyyyQWQWQWQWQWNPvvsUxEsUygNPNPQWQWPTyyyy
+yyQWQWQWhiCFQWNPUnjPjPjPjPyQNPQWQWHhPTyy
+yyQWQWObpZLdLdNPEyNPbINPEyNPNPQWQWQWPTyy
+yyQWQWQWLdlYLdLdLdtBNCpZLdLdeOQWQWQWQWyy
+yyQWhihilsLdLdLdLdLdXdLdLdVhNnftQWQWQWyy
+yyyyyyevlBwgaRLdoyLdLdBbOQftvFiAQWQWQWyy
+yyyyyydlzxmMvBGuLdLdftqyAdftBbQWQWQWPTyy
+yyyyyyevlBlBwgoyLdfthwqRAPeOQWQWQWQWPTyy
+yyyyhihihihiQULdAPBaHMLKLKQWQWQWQWQWPTyy
+yyPTPTQWQWQWQWLdRzAdLKLKaOhiQWQWQWHhyyyy
+yyPTPTHhQWiHiHJViHhiLKLKLKQWQWQWQWPTyyyy
+yyyyPTQWQWiHgKjPiHQWQWLKQWQWQWQWPTyyyyyy
+yyyyPTQWQWiHGvjiiHQWQWhiQWQWPTyyyyyyyyyy
+yyyyPTQWQWhiiHiHhiQWQWQWQWHhPTyyyyyyyyyy
+yyyyPTPTQWQWQWQWQWQWQWQWPTPTyyyyyyyyyyyy
+yyyyyyPTPTQWQWQWQWQWQWPTyyyyyyyyyyyyyyyy
+"}
