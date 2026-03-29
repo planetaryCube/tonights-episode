@@ -48,7 +48,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/xenoarch/lavaland/med)
 "abK" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
@@ -1699,7 +1698,7 @@
 /turf/open/floor/plating,
 /area/lavaland/underground/xenoarch/caloriteresearch)
 "bhv" = (
-/obj/effect/turf_decal/siding/thinplating_new/dark/end,
+/obj/effect/turf_decal/siding/dark,
 /turf/open/floor/iron/dark/small,
 /area/mine/xenoarch/engineering)
 "bhW" = (
@@ -1960,7 +1959,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1;
 	alpha = 120
@@ -2122,12 +2120,14 @@
 /turf/open/floor/iron/smooth,
 /area/lavaland/underground/xenoarch/caloriteresearch)
 "bwY" = (
-/obj/machinery/vending/tool,
-/obj/effect/turf_decal/bot{
-	dir = 1
+/obj/structure/cable,
+/obj/effect/turf_decal/box,
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
 	},
-/obj/effect/turf_decal/tile/neutral/full,
-/turf/open/floor/iron/dark/textured_large,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/mine/xenoarch/engineering)
 "bxL" = (
 /obj/structure/lattice/catwalk,
@@ -5142,7 +5142,15 @@
 /turf/open/floor/iron,
 /area/lavaland/underground/xenoarch/caloriteresearch)
 "dKY" = (
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/machinery/power/rtg/advanced,
+/turf/open/floor/circuit/green,
 /area/mine/xenoarch/engineering)
 "dLo" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner{
@@ -7176,8 +7184,8 @@
 /turf/open/floor/wood/parquet,
 /area/xenoarch/lavaland/lowerlevel)
 "fnp" = (
-/obj/effect/turf_decal/siding/thinplating_new/dark/end{
-	dir = 1
+/obj/effect/turf_decal/siding/dark/inner_corner{
+	dir = 4
 	},
 /turf/open/floor/iron/dark/small,
 /area/mine/xenoarch/engineering)
@@ -8314,6 +8322,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 6
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "geu" = (
@@ -9173,12 +9182,13 @@
 /turf/open/floor/plating,
 /area/lavaland/underground/xenoarch/caloriteresearch)
 "gNx" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/box,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 5
 	},
-/obj/machinery/power/adipoelectric_generator,
+/obj/effect/turf_decal/bot{
+	dir = 1
+	},
+/obj/machinery/vending/tool,
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "gNV" = (
@@ -10098,6 +10108,12 @@
 	},
 /turf/open/floor/plating,
 /area/xenoarch/lavaland/maint_east)
+"hus" = (
+/obj/structure/cable,
+/obj/machinery/power/rtg/advanced,
+/obj/effect/turf_decal/siding/thinplating/dark/end,
+/turf/open/floor/circuit/green,
+/area/mine/xenoarch/engineering)
 "huF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/siding/white{
@@ -12802,6 +12818,12 @@
 	},
 /turf/open/floor/iron,
 /area/xenoarch/lavaland/public)
+"jrL" = (
+/obj/effect/turf_decal/siding/dark/inner_corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
+/area/mine/xenoarch/engineering)
 "jrV" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -13572,12 +13594,12 @@
 /turf/open/floor/iron/dark,
 /area/xenoarch/lavaland/foyer)
 "jWd" = (
-/obj/machinery/vending/engivend,
-/obj/effect/turf_decal/bot{
-	dir = 1
+/obj/structure/cable,
+/obj/effect/turf_decal/box,
+/obj/machinery/power/adipoelectric_generator,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
 	},
-/obj/effect/turf_decal/tile/neutral/full,
-/turf/open/floor/iron/dark/textured_large,
 /area/mine/xenoarch/engineering)
 "jWs" = (
 /obj/structure/lattice/catwalk,
@@ -13981,6 +14003,9 @@
 /obj/structure/table/optable,
 /obj/machinery/defibrillator_mount/directional/north,
 /obj/effect/turf_decal/tile/blue/full,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/iron/large,
 /area/xenoarch/lavaland/med)
 "kjM" = (
@@ -14600,15 +14625,14 @@
 /turf/open/floor/mineral/sandstone_floor,
 /area/lavaland/underground/xenoarch/donut_factory)
 "kHu" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/box,
-/obj/machinery/power/port_gen/pacman{
-	anchored = 1
-	},
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1;
 	alpha = 120
 	},
+/obj/effect/turf_decal/bot{
+	dir = 1
+	},
+/obj/machinery/vending/engivend,
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "kHJ" = (
@@ -16506,7 +16530,6 @@
 	amount = 30
 	},
 /obj/structure/closet/crate/engineering,
-/obj/structure/cable,
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1;
@@ -17010,6 +17033,9 @@
 "mrf" = (
 /obj/structure/cable,
 /obj/machinery/power/rtg/advanced,
+/obj/effect/turf_decal/siding/thinplating/dark/end{
+	dir = 1
+	},
 /turf/open/floor/circuit/green,
 /area/mine/xenoarch/engineering)
 "mrh" = (
@@ -26531,7 +26557,6 @@
 	name = "Engineering"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/full,
 /turf/open/floor/iron/dark/textured_large,
 /area/mine/xenoarch/engineering)
@@ -111935,8 +111960,8 @@ nEf
 nEf
 vde
 mrf
-uvq
-mrf
+dKY
+hus
 vde
 nEf
 dMT
@@ -112450,7 +112475,7 @@ nEf
 nEf
 nEf
 vde
-dKY
+bhv
 uvq
 uvq
 eQJ
@@ -112710,7 +112735,7 @@ nEf
 vde
 bhv
 uvq
-fnp
+jrL
 wpe
 qNm
 kHZ
@@ -112967,8 +112992,8 @@ nEf
 nEf
 vde
 mrf
-uvq
-mrf
+dKY
+hus
 vde
 kHZ
 kHZ

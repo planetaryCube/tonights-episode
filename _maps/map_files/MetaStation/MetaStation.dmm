@@ -43098,7 +43098,7 @@
 	pixel_y = -3
 	},
 /obj/effect/turf_decal/tile/green/fourcorners,
-/obj/machinery/door/window/elevator/right/directional/west,
+/obj/machinery/door/window/left/directional/west,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "oBO" = (
@@ -68326,7 +68326,7 @@
 	pixel_y = 10
 	},
 /obj/effect/turf_decal/tile/green/fourcorners,
-/obj/machinery/door/window/elevator/right/directional/west,
+/obj/machinery/door/window/right/directional/west,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "wTp" = (
