@@ -157,7 +157,6 @@
 /area/ruin/space)
 "GH" = (
 /obj/structure/window/calorite/fulltile,
-/obj/structure/grille,
 /turf/open/floor/plating,
 /area/ruin/space)
 "Ht" = (
