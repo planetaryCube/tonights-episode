@@ -1,13 +1,13 @@
-#define BURSTING_FULLNESS_MIN_THRESHOLD FULLNESS_LEVEL_BLOATED //Minimum fullness threshold for doing any fullness related messages or code
-#define BURSTING_FATNESS_MIN_THRESHOLD 0.4 //Remaining percentage of the total fatness capacity needed before doing messages or code
-#define BURSTING_FLAVOR_PROB_MAX 0.2 //Maximum message frequency at 100% capacity
-#define BURSTING_FLAVOR_PROB_MIN 0.05 //Minimum message frequency at 0% capacity
+#define BURSTING_FULLNESS_MIN_THRESHOLD FULLNESS_LEVEL_BLOATED ///Minimum fullness threshold for doing any fullness related messages or code
+#define BURSTING_FATNESS_MIN_THRESHOLD 0.4 ///Remaining percentage of the total fatness capacity needed before doing messages or code
+#define BURSTING_FLAVOR_PROB_MAX 0.2 ///Maximum message frequency at 100% capacity
+#define BURSTING_FLAVOR_PROB_MIN 0.05 ///Minimum message frequency at 0% capacity
 
-#define BURSTING_ABOUT_TO_BURST "near_bursting" //Trait used for checking if they're about to burst
-#define BURSTING_DELAY_BURST_SECONDS 160 //How long to delay if we delay bursting
-#define BURSTING_CONFIRM "Burst Now!" //Button text
-#define BURSTING_DENY "Delay" //Button text
-#define BURSTING_ANIMATE_TIME 6 //How long in seconds the animation in seconds for bursting should play
+#define BURSTING_ABOUT_TO_BURST "near_bursting" ///Trait used for checking if they're about to burst
+#define BURSTING_DELAY_BURST_SECONDS 160 ///How long to delay if we delay bursting
+#define BURSTING_CONFIRM "Burst Now!" ///Button text
+#define BURSTING_DENY "Delay" ///Button text
+#define BURSTING_ANIMATE_TIME 6 ///How long in seconds the animation in seconds for bursting should play
 
 //Prefs
 #define BURSTING_PREF_DISABLED 0
@@ -16,8 +16,8 @@
 #define BURSTING_PREF_PERMA_FATAL 3
 
 //Sounds
-#define BURSTING_SOUND_RATIO 0.3 //The relative ratio between fatness and fullness between eachother for sounds to play
-#define BURSTING_SOUND_VOLUME 45
+#define BURSTING_SOUND_RATIO 0.3 ///The relative ratio between fatness and fullness between eachother for sounds to play
+#define BURSTING_SOUND_VOLUME 45 ///Sound volume for all the sounds
 #define BURSTING_CRESCENDO "modular_gs/sound/effects/inflation/pop/bursting_crescendo.ogg"
 #define BURSTING_CRESCENDO_DELAY "modular_gs/sound/effects/inflation/berryloop.ogg"
 #define BURSTING_BURST "modular_gs/sound/effects/inflation/pop/burst_thump.ogg"
@@ -27,7 +27,6 @@
 	'modular_gs/sound/voice/gurgle3.ogg'\
 )
 
-//These are just being used as placeholders for now
 #define BURSTING_FAT_SLOSH_SOUNDS list(\
 	'modular_gs/sound/effects/inflation/sloshing/slosh_1.ogg',\
 	'modular_gs/sound/effects/inflation/sloshing/slosh_2.ogg',\
@@ -104,7 +103,7 @@
 	"Your massive body wobbles as fat swells you bigger",\
 )
 
-#define BURSTING_FLAVOR_OVERWHELMINGFATNESS list(\
+#define BURSTING_FLAVOR_OVERWHELMING_FATNESS list(\
 	"Getting... way too... massive...",\
 	"Too... fat... gonna... burst...",\
 	"Too much fat... Can't... hold it...! I'm gonna burst!",\
@@ -115,6 +114,7 @@
 	"Your rolls squeeze together and creak as growing fat swells them tight"\
 )
 
+///Returns true if the capacity percentage is above a certain percentage of the other
 #define BURSTING_MACRO_CHECK_THRESHOLD(percentageA, percentageB) (percentageA > percentageB * BURSTING_SOUND_RATIO)
 
 ///Gets the players bursting type pref, returns a number coresponding to said pref
@@ -143,16 +143,19 @@
 	var/fatness_bursting_pref = client?.prefs?.read_preference(/datum/preference/numeric/helplessness/glutton_fatness_before_burst)
 	var/bursting_type_pref = get_bursting_pref()
 
+	if (!fullness_bursting_pref & !fatness_bursting_pref) //If both fatness and fullness bursting is disabled, then exit
+		return FALSE
+
 	//Adjust the thresholds to be relative to our minimum values so that the code doesn't run below a certain point
 	var/relative_fullness_threshold = max(fullness_bursting_pref - BURSTING_FULLNESS_MIN_THRESHOLD, BURSTING_FULLNESS_MIN_THRESHOLD)
 	var/relative_fatness_threshold = fatness_bursting_pref * BURSTING_FATNESS_MIN_THRESHOLD
-	var/relative_fullness = max(get_fullness() - BURSTING_FULLNESS_MIN_THRESHOLD, 0)
+	var/relative_fullness = max(fullness - BURSTING_FULLNESS_MIN_THRESHOLD, 0)
 	var/relative_fatness = max(fatness - fatness_bursting_pref  * (1 - BURSTING_FATNESS_MIN_THRESHOLD), 0)
 
 	//Capacity percentages
-	var/capacity_fullness = fullness_bursting_pref != 0 ? relative_fullness / relative_fullness_threshold  : -1 //Our glutton's fullness percentage, -1 flag if disabled
-	var/capacity_fatness = fatness_bursting_pref != 0 ? relative_fatness / relative_fatness_threshold : -1 //Our glutton's fatness percentage, -1 flag if disabled
-	var/capacity_percentage = max(capacity_fullness, capacity_fatness) //Use the greater percentage to determine if our glutton should burst, -1 if bursting types are disabled
+	var/capacity_fullness = fullness_bursting_pref != 0 ? relative_fullness / relative_fullness_threshold  : -1 ///Our glutton's fullness percentage, -1 flag if disabled
+	var/capacity_fatness = fatness_bursting_pref != 0 ? relative_fatness / relative_fatness_threshold : -1 ///Our glutton's fatness percentage, -1 flag if disabled
+	var/capacity_percentage = max(capacity_fullness, capacity_fatness) ///Use the greater percentage to determine if our glutton should burst, -1 if bursting types are disabled
 	var/burst_type_fullness = capacity_fullness >= capacity_fatness
 
 
@@ -162,8 +165,6 @@
 	//The chance for a message or sound to play based on the player's current capacity percentage adjusted between min and max values
 	var/flavor_message_chance = clamp((BURSTING_FLAVOR_PROB_MAX - BURSTING_FLAVOR_PROB_MIN) * capacity_percentage + BURSTING_FLAVOR_PROB_MIN, BURSTING_FLAVOR_PROB_MIN, BURSTING_FLAVOR_PROB_MAX)
 	if (prob(flavor_message_chance * 100))
-
-
 		//Pick a random message based on if we're too fat or full and select based on how much
 		var/message_content = ""
 		var/message_stage = clamp(round(capacity_percentage * 3.5 + 1), 1, 4) //Takes the capacity percentage and converts it into four equaly sized whole number 'stages' to be used as an index for selecting messages
@@ -180,19 +181,19 @@
 				BURSTING_FLAVOR_VERYFAT,
 				BURSTING_FLAVOR_SUPEROBESE,
 				BURSTING_FLAVOR_EXTREMELYDOUGHY,
-				BURSTING_FLAVOR_OVERWHELMINGFATNESS
+				BURSTING_FLAVOR_OVERWHELMING_FATNESS
 			)[message_stage])
 
 		to_chat(src, span_warning(message_content))
 
-		//Play a random sound based for fatness or fullness on if we're above a certain percentage of the other value, so that they won't both play unless you're above the threshold
-		if (BURSTING_MACRO_CHECK_THRESHOLD(capacity_fullness, capacity_fatness))
+		//Compare the two capcity percentages to each other and play sounds if they're higher than a percentage of the other
+		if ((capacity_fullness > capacity_fatness * BURSTING_SOUND_RATIO)) //Do fullness sounds
 			playsound(src.loc, pick(BURSTING_GURGLE_SOUNDS), BURSTING_SOUND_VOLUME, 1, 1, 1.2, ignore_walls = FALSE)
 
-		if (BURSTING_MACRO_CHECK_THRESHOLD(capacity_fatness, capacity_fullness))
+		if ((capacity_fatness > capacity_fullness * BURSTING_SOUND_RATIO)) //Do fatness sounds
 			playsound(src.loc, pick(BURSTING_FAT_SLOSH_SOUNDS), BURSTING_SOUND_VOLUME, 1, 1, 1.2, ignore_walls = FALSE)
 
-	//Trigger the burst
+	//Trigger the burst, can disable bursting if they wish to just have sounds and messages
 	if (bursting_type_pref != BURSTING_PREF_DISABLED && capacity_percentage > 1 && !HAS_TRAIT(src, BURSTING_ABOUT_TO_BURST))
 		trigger_glutton_burst(burst_type_fullness, bursting_type_pref)
 		return TRUE
@@ -201,7 +202,6 @@
 
 ///Opens the tgui popup for deciding wether to burst or delay
 /mob/living/carbon/human/proc/trigger_glutton_burst(burst_type, bursting_type_pref)
-
 	//Add self removing trait so that bursting doesn't repeatedly trigger, dual purpose as our delay if the delay button is pressed and a cooldown to delay repeated bursting
 	ADD_TRAIT(src, BURSTING_ABOUT_TO_BURST, TRAUMA_TRAIT)
 	addtimer(TRAIT_CALLBACK_REMOVE(src, BURSTING_ABOUT_TO_BURST, TRAUMA_TRAIT), BURSTING_DELAY_BURST_SECONDS SECONDS)
@@ -313,6 +313,4 @@
 #undef BURSTING_FLAVOR_VERYFAT
 #undef BURSTING_FLAVOR_SUPEROBESE
 #undef BURSTING_FLAVOR_EXTREMELYDOUGHY
-#undef BURSTING_FLAVOR_OVERWHELMINGFATNESS
-
-#undef BURSTING_MACRO_CHECK_THRESHOLD
+#undef BURSTING_FLAVOR_OVERWHELMING_FATNESS
