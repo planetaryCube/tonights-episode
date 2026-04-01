@@ -4042,9 +4042,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
 /obj/machinery/light/floor,
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
@@ -4263,7 +4260,6 @@
 "qx" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
-/obj/structure/closet/secure_closet/personal/cabinet,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/effect/spawner/random/entertainment/lighter,
 /obj/effect/turf_decal/siding/wood{
