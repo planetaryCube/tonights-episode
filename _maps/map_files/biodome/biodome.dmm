@@ -6796,6 +6796,7 @@
 /obj/item/kirbyplants/random,
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/apc/cell_10k,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "cin" = (
@@ -21051,15 +21052,12 @@
 /turf/open/floor/wood/parquet,
 /area/station/command/heads_quarters/qm)
 "gIC" = (
-/obj/structure/table/reinforced,
-/obj/structure/desk_bell{
-	pixel_x = 7
-	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "kitchencounter";
 	name = "Kitchen Counter Shutters"
 	},
 /obj/effect/turf_decal/tile/dark_green/opposingcorners,
+/obj/machinery/smartfridge/hotbar,
 /turf/open/floor/iron/white,
 /area/station/service/kitchen)
 "gIS" = (
@@ -29488,6 +29486,18 @@
 /obj/structure/flora/bush/snow/style_random,
 /turf/open/floor/fake_snow/safe,
 /area/station/maintenance/port/greater)
+"jzt" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "kitchencounter";
+	name = "Kitchen Counter Shutters"
+	},
+/obj/effect/turf_decal/tile/dark_green/opposingcorners,
+/obj/structure/desk_bell{
+	pixel_x = 7
+	},
+/turf/open/floor/iron/white,
+/area/station/service/kitchen)
 "jzx" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/siding/wood{
@@ -109646,7 +109656,7 @@ eHD
 kZY
 xkU
 ldW
-ajU
+jzt
 nej
 cgx
 our

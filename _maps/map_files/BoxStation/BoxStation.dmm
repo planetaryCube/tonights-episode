@@ -85273,6 +85273,7 @@
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/machinery/medical_kiosk,
 /obj/machinery/light/directional/north,
+/obj/effect/mapping_helpers/apc/cell_10k,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/medbay/lobby)
 "yjZ" = (
