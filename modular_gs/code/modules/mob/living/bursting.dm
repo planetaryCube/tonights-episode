@@ -254,7 +254,12 @@
 				hider_remove(hider)
 			if (istype(hider, /datum/reagent/blueberry_juice))
 				hider_remove(hider)
+
+		//Call the functions used to update fatness and hiders, since hider apply on its own wont update fatness if the hiders are removed
+		fatness = fatness_real
 		hiders_apply()
+		perma_apply()
+		xwg_resize()
 
 		//Get the fatness pref again incase it was changed since they burst and use it to determine the reduction so that the player doesn't repeatedly burst
 		var/fatness_bursting_pref = client?.prefs?.read_preference(/datum/preference/numeric/helplessness/glutton_fatness_before_burst)
