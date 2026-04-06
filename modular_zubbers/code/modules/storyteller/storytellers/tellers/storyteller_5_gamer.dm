@@ -11,13 +11,13 @@
 		TAG_DESTRUCTIVE = 0.7,
 		TAG_CHAOTIC = 1.3
 	)
-	population_min = 35
+	population_min = 25
 	antag_divisor = 5
 	storyteller_type = STORYTELLER_TYPE_INTENSE
 
 /datum/storyteller_data/tracks/gamer
-	threshold_moderate = 1300
-	threshold_major = 4000
-	threshold_ghostset = 6000
-	threshold_crewset = 2000
-	threshold_ghostset = 4800
+	threshold_mundane = 60
+	threshold_moderate = 90
+	threshold_major = 150
+	threshold_crewset = 480
+	threshold_ghostset = 240
