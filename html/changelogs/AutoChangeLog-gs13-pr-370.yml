@@ -1,0 +1,4 @@
+author: "aliden1z"
+delete-after: True
+changes:
+  - bugfix: "Fixed a math bug in the Adipoelectric Transformer's power scaling."
