@@ -8,7 +8,7 @@
 		TAG_CHAOTIC = 0.1, //*look inside high chaos storyteller* *no chaos*
 		TAG_CREW_ANTAG = 2,
 	)
-	population_min = 25
+	population_min = 25 // GS13 EDIT: 35
 	antag_divisor = 5
 	storyteller_type = STORYTELLER_TYPE_INTENSE
 
@@ -26,6 +26,9 @@
 
 	event_repetition_multiplier = 1 //Set from default 0.6 so that the round just doesn't throw every antag type possible at the crew.
 
+// GS13 EDIT
+// original values: 1200, 1800, 8000, 1950, 6500
+// GS13 END EDIT
 /datum/storyteller_data/tracks/enemy
 	threshold_mundane = 90
 	threshold_moderate = 120

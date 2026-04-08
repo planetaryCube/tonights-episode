@@ -11,10 +11,13 @@
 		TAG_DESTRUCTIVE = 0.7,
 		TAG_CHAOTIC = 1.3
 	)
-	population_min = 25
+	population_min = 25 // GS13 EDIT: 35
 	antag_divisor = 5
 	storyteller_type = STORYTELLER_TYPE_INTENSE
 
+// GS13 EDIT
+// original values: 1200, 1300, 4000, 2000, 4800
+// GS13 END EDIT
 /datum/storyteller_data/tracks/gamer
 	threshold_mundane = 60
 	threshold_moderate = 90

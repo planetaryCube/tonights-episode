@@ -15,6 +15,9 @@
 	antag_divisor = 32
 	storyteller_type = STORYTELLER_TYPE_CALM
 
+// GS13 EDIT
+// original values: 1800, 2700, 16000, 3200, 20000
+// GS13 END EDIT
 /datum/storyteller_data/tracks/chill
 	threshold_mundane = 60
 	threshold_moderate = 120
