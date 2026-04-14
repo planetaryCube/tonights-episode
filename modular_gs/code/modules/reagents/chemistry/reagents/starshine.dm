@@ -119,8 +119,8 @@
 /datum/reagent/consumable/starshine/blue/proc/fat_hide()
 	return (CHEM_TO_WEIGHT_MULTIPLIER * (volume * volume))/1000
 
-/datum/reagent/consumable/starshine/blue/on_mob_add(mob/living/holder, amount)
-	if(!iscarbon(holder))
+/datum/reagent/consumable/starshine/blue/on_mob_add(mob/living/carbon/holder, amount)
+	if(!istype(holder))
 		return
 	var/mob/living/carbon/affected_mob = holder
 	affected_mob.hider_add(src)
@@ -132,8 +132,8 @@
 	holder.hider_remove(src)
 	return ..()
 
-/datum/reagent/consumable/starshine/blue/overdose_start(mob/living/M)
-	if(!ishuman(M))
+/datum/reagent/consumable/starshine/blue/overdose_start(mob/living/carbon/human/M)
+	if(!istype(M))
 		return
 	var/mob/living/carbon/human/drinker = M
 	to_chat(drinker, "<span class='userdanger'>You drank too much [name]! Something about your body has shifted!</span>")
