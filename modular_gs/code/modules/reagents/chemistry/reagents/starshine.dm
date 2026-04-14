@@ -34,6 +34,7 @@
 /datum/reagent/consumable/starshine/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
 	if(QDELETED(light_holder))
 		holder.del_reagent(type) //If we lost our light object somehow, remove the reagent
+		return
 	else if(light_holder.loc != drinker)
 		light_holder.forceMove(drinker)
 
