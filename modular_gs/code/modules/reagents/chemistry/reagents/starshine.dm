@@ -143,8 +143,6 @@
 
 	return
 
-
-
 /obj/machinery/vending/starshine
 	name = "Starshine Vending Machine"
 	desc = "Starshine's cola machine, for drinks that will make you glow!"
