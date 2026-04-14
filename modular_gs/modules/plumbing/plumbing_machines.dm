@@ -233,8 +233,6 @@
 
 	SEND_SIGNAL(src, COMSIG_IV_ATTACH, target)
 
-
-
 /obj/machinery/iv_drip/plumbing_milker
 	name = "automated milker"
 	desc = "A plumbing machine designed to drain someone of chemicals inside their body, including exposed breasts and genitals."
