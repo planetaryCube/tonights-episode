@@ -275,8 +275,10 @@
 			visible_message(span_warning("[attachment.attached_to] is detached from [src]."))
 			detach_iv()
 			return
+			
 		visible_message(span_warning("[attachment.attached_to] is detached from [src]."))
 		detach_iv()
+		
 	user.visible_message(span_warning("[user] attaches [src] to [target]."), span_notice("You attach [src] to [target]."))
 	attach_iv(target, user)
 
