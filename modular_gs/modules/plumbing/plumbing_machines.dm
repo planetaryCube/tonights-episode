@@ -420,10 +420,7 @@
 	return ..()*/
 
 /datum/iv_drip_attachment/feeder
-/datum/iv_drip_attachment/feeder/New(
-	obj/machinery/iv_drip/iv_drip,
-	atom/attached_to
-)
+/datum/iv_drip_attachment/feeder/New(obj/machinery/iv_drip/iv_drip, atom/attached_to)
 	. = ..()
 	beam.override_origin_pixel_x = 13
 	beam.override_origin_pixel_y = -3
