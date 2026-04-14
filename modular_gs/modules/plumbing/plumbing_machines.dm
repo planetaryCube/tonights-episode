@@ -49,7 +49,6 @@
 /datum/component/plumbing/automated_iv/milker/Initialize(start=TRUE, _ducting_layer, _turn_connects=TRUE, datum/reagents/custom_receiver)
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
-
 	if(ducting_layer)
 		src.ducting_layer = ducting_layer
 
