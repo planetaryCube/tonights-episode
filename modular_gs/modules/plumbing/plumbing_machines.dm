@@ -394,10 +394,7 @@
 	SEND_SIGNAL(src, COMSIG_IV_ATTACH, target)
 
 /datum/iv_drip_attachment/milker
-/datum/iv_drip_attachment/milker/New(
-	obj/machinery/iv_drip/iv_drip,
-	atom/attached_to
-)
+/datum/iv_drip_attachment/milker/New(obj/machinery/iv_drip/iv_drip, atom/attached_to)
 	. = ..()
 	beam.override_origin_pixel_x = 11
 	beam.override_origin_pixel_y = -3
