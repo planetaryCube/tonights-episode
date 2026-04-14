@@ -33,7 +33,7 @@
 		enable()
 	if(!istype(parent, /obj/machinery/iv_drip/plumbing_feeder))
 		return COMPONENT_INCOMPATIBLE
-		
+
 	var/obj/machinery/iv_drip/plumbing/drip = parent
 	holder = new(drip.reagents.maximum_volume, drip.reagents.flags)
 	holder.my_atom = drip
@@ -65,7 +65,7 @@
 		enable()
 	if(!istype(parent, /obj/machinery/iv_drip/plumbing_milker))
 		return COMPONENT_INCOMPATIBLE
-		
+
 	var/obj/machinery/iv_drip/plumbing/drip = parent
 	holder = new(drip.reagents.maximum_volume, drip.reagents.flags)
 	holder.my_atom = drip
@@ -79,7 +79,7 @@
 		for(var/datum/reagent/contained_reagent as anything in drip.reagents.reagent_list)
 			if(contained_reagent.type == reagent)
 				return TRUE
-				
+
 	else if(drip.reagents.total_volume) //take whatever
 		return TRUE
 
@@ -126,17 +126,17 @@
 	if(!isliving(user))
 		to_chat(user, span_warning("You can't do that!"))
 		return
-		
+
 	if(!iscarbon(target))
 		to_chat(user, span_warning("This machine only works on humanoids!"))
 		return
-		
+
 	if(attachment)
 		if(attachment.attached_to == target)
 			visible_message(span_warning("[attachment.attached_to] is detached from [src]."))
 			detach_iv()
 			return
-			
+
 		visible_message(span_warning("[attachment.attached_to] is detached from [src]."))
 		detach_iv()
 	user.visible_message(span_warning("[user] attaches [src] to [target]."), span_notice("You attach [src] to [target]."))
@@ -164,7 +164,7 @@
 		begin_processing()
 	else
 		end_processing()
-		
+
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/iv_drip/plumbing_feeder/plunger_act(obj/item/plunger/attacking_plunger, mob/living/user, reinforced)
@@ -181,13 +181,12 @@
 		return PROCESS_KILL
 
 	var/atom/attached_to = attachment.attached_to
-
 	if(!(get_dist(src, attached_to) <= 3 && isturf(attached_to.loc)))
 		if(isliving(attached_to))
 			to_chat(attached_to, span_userdanger("The feeding hose drops to the floor."))
 		else
 			visible_message(span_warning("[attached_to] is detached from [src]."))
-			
+
 		detach_iv()
 		return PROCESS_KILL
 
@@ -215,7 +214,7 @@
 		user.visible_message(span_warning("[usr] begins attaching [src] to [target]..."), span_warning("You begin attaching [src] to [target]."))
 		if(!do_after(usr, 1 SECONDS, target))
 			return
-			
+
 	usr.visible_message(span_warning("[usr] attaches [src] to [target]."), span_notice("You attach [src] to [target]."))
 	var/datum/reagents/container = get_reagents()
 	log_combat(usr, target, "attached", src, "containing: ([container.get_reagent_log_string()])")
@@ -275,10 +274,10 @@
 			visible_message(span_warning("[attachment.attached_to] is detached from [src]."))
 			detach_iv()
 			return
-			
+
 		visible_message(span_warning("[attachment.attached_to] is detached from [src]."))
 		detach_iv()
-		
+
 	user.visible_message(span_warning("[user] attaches [src] to [target]."), span_notice("You attach [src] to [target]."))
 	attach_iv(target, user)
 
@@ -304,7 +303,7 @@
 		begin_processing()
 	else
 		end_processing()
-		
+
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/iv_drip/plumbing_milker/plunger_act(obj/item/plunger/attacking_plunger, mob/living/user, reinforced)
@@ -324,7 +323,6 @@
 		return PROCESS_KILL
 
 	var/atom/attached_to = attachment.attached_to
-
 	if(!(get_dist(src, attached_to) <= 3 && isturf(attached_to.loc)))
 		if(isliving(attached_to))
 			to_chat(attached_to, span_userdanger("The milking tubes drop to the floor."))
@@ -338,30 +336,31 @@
 		return PROCESS_KILL
 	if(!transfer_rate)
 		return
+	if(!isliving(attached_to))
+		return
 
-	else if (isliving(attached_to))
-		var/mob/living/attached_mob = attached_to
-		var/amount = min(transfer_rate * seconds_per_tick, drip_reagents.maximum_volume - drip_reagents.total_volume)
-		// If the beaker is full, ping
-		if(!amount)
-			return
-		var/atom/movable/target = use_internal_storage ? src : reagent_container
-		attached_mob.reagents.trans_to(target, amount)
+	var/amount = min(transfer_rate * seconds_per_tick, drip_reagents.maximum_volume - drip_reagents.total_volume)
+	if(!amount)
+		return
 
-		var/obj/item/organ/genital/breasts/breasts = attached_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
-		if(breasts && breasts.is_exposed() && breasts.lactates)
-			breasts.reagents.trans_to(target, amount)
+	var/atom/movable/target = use_internal_storage ? src : reagent_container
+	var/mob/living/attached_mob = attached_to
+	attached_mob.reagents.trans_to(target, amount)
 
-		var/obj/item/organ/genital/testicles/testes = attached_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
-		var/obj/item/organ/genital/penis/penis = attached_mob.get_organ_slot(ORGAN_SLOT_PENIS)
-		if(testes && penis && penis.is_exposed())
-			testes.reagents.trans_to(target, amount)
+	var/obj/item/organ/genital/breasts/breasts = attached_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
+	if(breasts && breasts.is_exposed() && breasts.lactates)
+		breasts.reagents.trans_to(target, amount)
 
-		var/obj/item/organ/genital/vagina = attached_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
-		if(vagina && vagina.is_exposed())
-			vagina.reagents.trans_to(target, amount)
+	var/obj/item/organ/genital/testicles/testes = attached_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/genital/penis/penis = attached_mob.get_organ_slot(ORGAN_SLOT_PENIS)
+	if(testes && penis && penis.is_exposed())
+		testes.reagents.trans_to(target, amount)
 
-		update_appearance(UPDATE_ICON)
+	var/obj/item/organ/genital/vagina = attached_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
+	if(vagina && vagina.is_exposed())
+		vagina.reagents.trans_to(target, amount)
+
+	update_appearance(UPDATE_ICON)
 
 /obj/machinery/iv_drip/plumbing_milker/update_icon_state()
 	. = ..()
@@ -404,15 +403,6 @@
 	. = ..()
 	beam.override_origin_pixel_x = 13
 	beam.override_origin_pixel_y = -3
-
-/*
-/datum/iv_drip_attachment/feeder/Destroy(force)
-	iv_drip = null
-	attached_to = null
-
-	QDEL_NULL(beam)
-
-	return ..()*/
 
 #undef IV_TAKING
 #undef MIN_IV_TRANSFER_RATE

@@ -1,3 +1,11 @@
+//The minimum value the range of the light cast by a starshine drinker can have
+#define LIGHT_RANGE_MINIMUM 3
+//The minimum value for the power of the light cast by a starshine drinker
+#define LIGHT_POWER_MINIMUM 0.7
+//The value by which the volume of chemical is multiplied for the purpose of hiders calculations
+#define CHEM_TO_WEIGHT_MULTIPLIER 124
+
+
 /datum/reagent/consumable/starshine
 	name = "Starshine Nova"
 	description = "A popular brand of soft drinks, this one is its classic strawberry flavor."
@@ -8,6 +16,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	glass_price = DRINK_PRICE_MEDIUM
 	nutriment_factor = 3
+	/// The current light cast by the reagent's drinker. Stored to more easily modify its values and delete it
 	var/obj/effect/light_holder
 
 /datum/glass_style/drinking_glass/starshine_red
@@ -29,7 +38,7 @@
 	. = ..()
 	to_chat(drinker, span_notice("You feel like a shining star!"))
 	light_holder = new(drinker)
-	light_holder.set_light(3, 0.7, color)
+	light_holder.set_light(LIGHT_RANGE_MINIMUM, LIGHT_POWER_MINIMUM, color)
 
 /datum/reagent/consumable/starshine/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
 	if(QDELETED(light_holder))
@@ -38,7 +47,7 @@
 	else if(light_holder.loc != drinker)
 		light_holder.forceMove(drinker)
 
-	light_holder.set_light(max(3, volume/100), max(0.7, volume/100), color) //Update light strength and rage based on volume
+	light_holder.set_light(LIGHT_RANGE_MINIMUM + (volume*0.007), LIGHT_POWER_MINIMUM + (volume*0.003), color) //Update light strength and rage based on volume
 	return ..()
 
 /datum/reagent/consumable/starshine/on_mob_end_metabolize(mob/living/drinker)
@@ -108,7 +117,7 @@
 	required_reagents = list(/datum/reagent/bluespace = 1, /datum/reagent/consumable/sodawater = 1, /datum/reagent/consumable/sugar = 1)
 
 /datum/reagent/consumable/starshine/blue/proc/fat_hide()
-	return (124 * (volume * volume))/1000
+	return (CHEM_TO_WEIGHT_MULTIPLIER * (volume * volume))/1000
 
 /datum/reagent/consumable/starshine/blue/on_mob_add(mob/living/holder, amount)
 	if(!iscarbon(holder))
@@ -117,9 +126,9 @@
 	affected_mob.hider_add(src)
 	..()
 /datum/reagent/consumable/starshine/blue/on_mob_delete(mob/living/carbon/holder)
-	if(!istype()holder)
+	if(!istype(holder))
 		return
-	
+
 	holder.hider_remove(src)
 	return ..()
 
@@ -203,3 +212,7 @@
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/item/vending_refill/starshine)
 	crate_name = "starshine vendor supply crate"
+
+#undef LIGHT_RANGE_MINIMUM
+#undef LIGHT_POWER_MINIMUM
+#undef CHEM_TO_WEIGHT_MULTIPLIER
