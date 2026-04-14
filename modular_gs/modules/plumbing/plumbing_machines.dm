@@ -59,7 +59,6 @@
 	reagents = parent_movable.reagents
 	src.turn_connects = turn_connects
 	src.extend_pipe_to_edge = extend_pipe_to_edge
-
 	set_recipient_reagents_holder(custom_receiver ? custom_receiver : parent_movable.reagents)
 
 	if(start)
