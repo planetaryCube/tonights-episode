@@ -116,13 +116,12 @@
 	var/mob/living/carbon/affected_mob = holder
 	affected_mob.hider_add(src)
 	..()
-
-/datum/reagent/consumable/starshine/blue/on_mob_delete(mob/living/holder)
-	if(!iscarbon(holder))
+/datum/reagent/consumable/starshine/blue/on_mob_delete(mob/living/carbon/holder)
+	if(!istype()holder)
 		return
-	var/mob/living/carbon/holder_carbon = holder
-	holder_carbon.hider_remove(src)
-	..()
+	
+	holder.hider_remove(src)
+	return ..()
 
 /datum/reagent/consumable/starshine/blue/overdose_start(mob/living/M)
 	if(!ishuman(M))
