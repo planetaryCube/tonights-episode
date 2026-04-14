@@ -42,9 +42,6 @@
 	process_request(dir = dir)
 
 
-
-
-
 /datum/component/plumbing/automated_iv/milker
 	demand_connects = null
 	supply_connects = NORTH
