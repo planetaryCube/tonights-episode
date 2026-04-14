@@ -400,14 +400,6 @@
 	. = ..()
 	beam.override_origin_pixel_x = 11
 	beam.override_origin_pixel_y = -3
-/*
-/datum/iv_drip_attachment/milker/Destroy(force)
-	iv_drip = null
-	attached_to = null
-
-	QDEL_NULL(beam)
-
-	return ..()*/
 
 /datum/iv_drip_attachment/feeder
 /datum/iv_drip_attachment/feeder/New(obj/machinery/iv_drip/iv_drip, atom/attached_to)
