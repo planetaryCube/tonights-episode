@@ -31,9 +31,9 @@
 
 	if(start)
 		enable()
-
 	if(!istype(parent, /obj/machinery/iv_drip/plumbing_feeder))
 		return COMPONENT_INCOMPATIBLE
+		
 	var/obj/machinery/iv_drip/plumbing/drip = parent
 	holder = new(drip.reagents.maximum_volume, drip.reagents.flags)
 	holder.my_atom = drip
