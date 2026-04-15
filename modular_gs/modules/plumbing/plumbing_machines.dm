@@ -62,6 +62,8 @@
 
 /obj/machinery/iv_drip/gs13
 	icon = 'modular_gs/icons/obj/plumping.dmi'
+	icon_state = "feed"
+	base_icon_state = "feed"
 	density = TRUE
 	use_internal_storage = TRUE
 	processing_flags = START_PROCESSING_MANUALLY
