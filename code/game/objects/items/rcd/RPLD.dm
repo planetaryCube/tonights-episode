@@ -66,8 +66,8 @@
 			/obj/machinery/plumbing/pill_press = 20,
 			/obj/machinery/iv_drip/plumbing = 20,
 			//GS13 EDIT START - Automated feeder & milker
-			/obj/machinery/iv_drip/plumbing_feeder = 20,
-			/obj/machinery/iv_drip/plumbing_milker = 20
+			/obj/machinery/iv_drip/gs13/plumbing_feeder = 20,
+			/obj/machinery/iv_drip/gs13/plumbing_milker = 20
 			//GS13 EDIT End
 		),
 		// SKYRAT EDIT ADDITION START - static list so we have no choice but to skyrat edit these here

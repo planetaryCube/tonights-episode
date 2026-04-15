@@ -99,7 +99,7 @@
 	glass_price = DRINK_PRICE_HIGH
 	nutriment_factor = 5
 	overdose_threshold = 100
-	addiction_types = list(/datum/addiction/starshine_blue = 30)
+	addiction_types = list(/datum/addiction/starshine_blue = 15)
 
 /datum/addiction/starshine_blue
 	name = "starshine neutron"
@@ -125,6 +125,7 @@
 	var/mob/living/carbon/affected_mob = holder
 	affected_mob.hider_add(src)
 	..()
+
 /datum/reagent/consumable/starshine/blue/on_mob_delete(mob/living/carbon/holder)
 	if(!istype(holder))
 		return
@@ -132,16 +133,16 @@
 	holder.hider_remove(src)
 	return ..()
 
-/datum/reagent/consumable/starshine/blue/overdose_start(mob/living/carbon/human/M)
-	if(!istype(M))
+/datum/reagent/consumable/starshine/blue/overdose_start(mob/living/carbon/human/human)
+	if(!istype(human))
 		return
-	var/mob/living/carbon/human/drinker = M
+	var/mob/living/carbon/human/drinker = human
 	to_chat(drinker, "<span class='userdanger'>You drank too much [name]! Something about your body has shifted!</span>")
 
 	var/obj/item/organ/genital/breasts/breasts = drinker.get_organ_slot(ORGAN_SLOT_BREASTS)
-	if(breasts && breasts.lactates)
-		breasts.internal_fluid_datum = /datum/reagent/consumable/starshine/blue
+	if(breasts)
 		breasts.lactates = TRUE
+		breasts.internal_fluid_datum = /datum/reagent/consumable/starshine/blue
 	var/obj/item/organ/genital/testicles/testes = drinker.get_organ_slot(ORGAN_SLOT_TESTICLES)
 	if(testes)
 		testes.internal_fluid_datum = /datum/reagent/consumable/starshine/blue
@@ -149,54 +150,52 @@
 	if(vagina)
 		vagina.internal_fluid_datum = /datum/reagent/consumable/starshine/blue
 
-	return
-
 /obj/machinery/vending/starshine
 	name = "Starshine Vending Machine"
 	desc = "Starshine's cola machine, for drinks that will make you glow!"
-	icon = 'modular_gs/icons/obj/starshine.dmi'
+	icon = 'modular_gs/icons/obj/vending.dmi'
 	icon_state = "starshine"
 	product_slogans = "Shine like a star, with Starshine!"
 	vend_reply = "Shine on, little star!"
 	products = list(
 				/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine = 30,
-				/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/y = 30,
-				/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/o = 30,
+				/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/yellow = 30,
+				/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/orange = 30,
 				)
 	contraband = list(
-				///obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine_b = 30,
+				///obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine_blue = 30,
 				)
 	premium = list(
-				/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/b = 10,
+				/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/blue = 10,
 				)
 
 	refill_canister = /obj/item/vending_refill/starshine
 
 /obj/item/vending_refill/starshine
 	machine_name = "Starshine Vendor"
-	icon = 'modular_gs/icons/obj/starshine.dmi'
+	icon = 'modular_gs/icons/obj/vending_restock.dmi'
 	icon_state = "refill_starshine"
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine
 	name = "Starshine Red Giant"
 	icon = 'modular_gs/icons/obj/starshine.dmi'
 	icon_state = "starshine_r"
-	list_reagents = list(/datum/reagent/consumable/starshine = 30)
+	list_reagents = list(/datum/reagent/consumable/starshine = 50)
 
-/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/y
+/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/yellow
 	name = "Starshine Yellow Dwarf"
 	icon_state = "starshine_y"
-	list_reagents = list(/datum/reagent/consumable/starshine/yellow = 30)
+	list_reagents = list(/datum/reagent/consumable/starshine/yellow = 50)
 
-/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/o
+/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/orange
 	name = "Starshine Orange Giant"
 	icon_state = "starshine_o"
-	list_reagents = list(/datum/reagent/consumable/starshine/orange = 30)
+	list_reagents = list(/datum/reagent/consumable/starshine/orange = 50)
 
-/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/b
+/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine/blue
 	name = "Starshine Neutron"
 	icon_state = "starshine_b"
-	list_reagents = list(/datum/reagent/consumable/starshine/blue = 30)
+	list_reagents = list(/datum/reagent/consumable/starshine/blue = 50)
 
 /obj/machinery/chem_dispenser/drinks/Initialize(mapload)
 	. = ..()
@@ -209,9 +208,9 @@
 /datum/supply_pack/vending/starshine
 	name = "Starshine Vendor Supply Crate"
 	desc = "Ran out of soda? We got you covered! No worries and drink plenty!"
-	cost = CARGO_CRATE_VALUE * 4
+	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/vending_refill/starshine)
-	crate_name = "starshine vendor supply crate"
+	crate_name = "starshine vendor supply scrate"
 
 #undef LIGHT_RANGE_MINIMUM
 #undef LIGHT_POWER_MINIMUM
