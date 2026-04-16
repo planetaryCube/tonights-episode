@@ -20,7 +20,7 @@
 
 	if(start)
 		enable()
-	if(!istype(parent, /obj/machinery/iv_drip/gs13/plumbing_feeder) && !istype(parent, /obj/machinery/iv_drip/gs13/plumbing_milker))
+	if(!istype(parent, /obj/machinery/iv_drip/gs13))
 		return COMPONENT_INCOMPATIBLE
 
 	var/obj/machinery/iv_drip/plumbing/drip = parent
@@ -128,7 +128,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/iv_drip/gs13/plunger_act(obj/item/plunger/attacking_plunger, mob/living/user, reinforced)
-	user.balloon_alert_to_viewers("furiously plunging...", "plunging milker...")
+	user.balloon_alert_to_viewers("furiously plunging...", "plunging [src]...")
 	if(!do_after(user, 3 SECONDS, target = src))
 		return TRUE
 	user.balloon_alert_to_viewers("finished plunging")
@@ -262,13 +262,11 @@
 
 	update_appearance(UPDATE_ICON)
 
-/datum/iv_drip_attachment/milker
 /datum/iv_drip_attachment/milker/New(obj/machinery/iv_drip/iv_drip, atom/attached_to)
 	. = ..()
 	beam.override_origin_pixel_x = 11
 	beam.override_origin_pixel_y = -3
 
-/datum/iv_drip_attachment/feeder
 /datum/iv_drip_attachment/feeder/New(obj/machinery/iv_drip/iv_drip, atom/attached_to)
 	. = ..()
 	beam.override_origin_pixel_x = 13
