@@ -210,7 +210,7 @@
 	desc = "Ran out of soda? We got you covered! No worries and drink plenty!"
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/vending_refill/starshine)
-	crate_name = "starshine vendor supply scrate"
+	crate_name = "starshine vendor supply crate"
 
 #undef LIGHT_RANGE_MINIMUM
 #undef LIGHT_POWER_MINIMUM
