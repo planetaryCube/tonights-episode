@@ -674,7 +674,9 @@ export function MainPage(props: MainPageProps) {
         <Divider />
         <BlockQuote>
           These preferences will allow you to customize whether and how
-          fatness and fullness bursting mechanics will affect you.
+          fatness and fullness bursting mechanics will affect you. Setting your
+          bursting type to disabled and leaving your respective fullness and
+          fatness settings will let you still have the sounds and messages.
         </BlockQuote>
         <PreferenceList
           randomizations={getRandomization(

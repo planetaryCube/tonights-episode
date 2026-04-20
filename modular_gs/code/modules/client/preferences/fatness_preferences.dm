@@ -150,11 +150,14 @@
 	savefile_key = "glutton_bursting_type"
 
 /datum/preference/choiced/glutton_bursting_type/init_possible_values()
+	//These must match in bursting.dm
 	return list(
 		"Disabled",
 		"Safe",
-		"Fatal",
-		"Permanent Fatal"
+		"Injure",
+		"Crit",
+		"Fatal gib and cryo",
+		"Permanent fatal and drop head"
 	)
 
 /datum/preference/choiced/glutton_bursting_type/create_default_value()
