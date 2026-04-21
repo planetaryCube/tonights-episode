@@ -16,7 +16,7 @@
 	pixel_y = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	food_reagents = list(/datum/reagent/consumable/nutriment = 200, /datum/reagent/consumable/tomatojuice = 6, /datum/reagent/consumable/nutriment/vitamin = 20)
+	food_reagents = list(/datum/reagent/consumable/nutriment = 200, /datum/reagent/consumable/tomatojuice = 5, /datum/reagent/consumable/nutriment/vitamin = 20)
 	max_volume = 500
 	bite_consumption = 5
 	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "meat" = 1, "overwhelming surge of calories" = 10)
@@ -38,7 +38,7 @@
 	name = "Framewrecker Pizza Slice"
 	desc = "This mere slice is the size of pizza on its own!"
 	icon = 'modular_gs/icons/obj/food/ported_meals.dmi'
-	food_reagents = list(/datum/reagent/consumable/nutriment = 60)
+	food_reagents = list(/datum/reagent/consumable/nutriment = 40, /datum/reagent/consumable/tomatojuice = 1, /datum/reagent/consumable/nutriment/vitamin = 4)
 	icon_state = "big_mushroom_slice"
 
 /obj/item/food/pizzaslice/framewrecker/mushroom
@@ -75,15 +75,8 @@
 	. = NONE
 	if(isnull(slice_type) || !(tool.tool_behaviour in cutting_tools))
 		return
-	if(!sliced)
-		user.visible_message(
-			"[user] starts to slowly cut through The One Pizza.", 
-			span_notice("You start to slowly cut through The One Pizza."))
-		slice(user, tool)
-		return ITEM_INTERACT_SUCCESS
-	user.visible_message(
-		"[user] successfully cuts The One Pizza.", 
-		span_notice("You successfully cut The One Pizza."))
+
+	user.visible_message("[user] successfully cuts The One Pizza.", span_notice("You successfully cut The One Pizza."))
 	cut_apart()
 	return ITEM_INTERACT_SUCCESS
 
