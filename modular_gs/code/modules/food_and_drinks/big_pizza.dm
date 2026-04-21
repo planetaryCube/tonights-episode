@@ -4,7 +4,8 @@
 ////////////////////////////////////////////////PIZZA!!!////////////////////////////////////////////////
 
 // this has been ported from CHOMP/Virgo, but I've decided to adjust the recipe a bit
-// there's both the recipe and the defines for the pizza itself here
+
+// ourgh I need a big pizzuh...
 
 /obj/item/food/pizza/framewrecker
 	name = "Framewrecker Pizza"
@@ -18,8 +19,11 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 200, /datum/reagent/consumable/tomatojuice = 6, /datum/reagent/consumable/nutriment/vitamin = 20)
 	max_volume = 500
 	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1, "meat" = 1, "overwhelming surge of calories" = 10)
-	foodtypes = GRAIN | VEGETABLES | DAIRY | MEAT | JUNKFOOD
+	foodtypes = MEAT | VEGETABLES | RAW | GRAIN | FRUIT | DAIRY | PINEAPPLE
 	boxtag = "The One Pizza"
+	venue_value = FOOD_PRICE_NORMAL
+	crafting_complexity = FOOD_COMPLEXITY_3
+	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 5.3)
 
 	var/slice_list = list(/obj/item/food/pizzaslice/framewrecker/mushroom,
 							/obj/item/food/pizzaslice/framewrecker/veggie,
@@ -86,16 +90,3 @@
 	for(var/slicetype in slice_list)
 		new slicetype(src.loc)
 	qdel(src)
-
-// recipe
-
-/datum/crafting_recipe/food/pizza/framewrecker_pizza
-	reqs = list(
-		/obj/item/food/pizzabread = 4,
-		/obj/item/food/meat/cutlet = 4,
-		/obj/item/food/cheese/wedge = 8,
-		/obj/item/food/grown/tomato = 8,
-		/obj/item/food/pineappleslice = 2,
-		/obj/item/food/grown/mushroom/chanterelle = 2
-	)
-	result = /obj/item/food/pizza/framewrecker
