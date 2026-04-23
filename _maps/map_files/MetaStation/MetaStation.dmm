@@ -23595,8 +23595,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/vending/coffee,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden/layer5,
+/obj/machinery/vending/starshine,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "hZy" = (
@@ -36768,6 +36768,7 @@
 /obj/effect/turf_decal/plaque{
 	icon_state = "L1"
 	},
+/obj/item/kirbyplants/organic/applebush,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "muu" = (
@@ -37294,7 +37295,7 @@
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
 	},
-/obj/item/kirbyplants/organic/applebush,
+/obj/machinery/vending/starshine,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "mDA" = (

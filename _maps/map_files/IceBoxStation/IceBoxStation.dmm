@@ -20448,6 +20448,7 @@
 /area/station/engineering/supermatter/room)
 "fyZ" = (
 /obj/machinery/status_display/evac/directional/north,
+/obj/machinery/vending/starshine,
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "fza" = (
@@ -36907,7 +36908,10 @@
 	pixel_x = 10;
 	pixel_y = 32
 	},
-/obj/machinery/vending/gato_merch,
+/obj/machinery/vending/gato_merch{
+	pixel_x = -3;
+	pixel_y = 0
+	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "kdS" = (
@@ -57618,7 +57622,14 @@
 	pixel_x = 10;
 	pixel_y = 32
 	},
-/obj/machinery/vending/mealdor,
+/obj/machinery/vending/mealdor{
+	pixel_x = 2;
+	pixel_y = 0
+	},
+/obj/machinery/vending/starshine{
+	pixel_x = -20;
+	pixel_y = 0
+	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "pJc" = (
@@ -84032,7 +84043,10 @@
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
 "xcy" = (
-/obj/machinery/vending/gato,
+/obj/machinery/vending/gato{
+	pixel_x = -10;
+	pixel_y = 0
+	},
 /obj/effect/decal/gatofull_2{
 	pixel_x = 10;
 	pixel_y = 32

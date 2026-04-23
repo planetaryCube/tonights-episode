@@ -3782,17 +3782,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/trimline/purple/filled/line,
-/obj/structure/rack,
-/obj/item/storage/box/nif_ghost_box,
-/obj/item/storage/box/nif_ghost_box,
-/obj/item/storage/box/nif_ghost_box,
-/obj/item/storage/box/nif_ghost_box,
-/obj/item/storage/box/nif_ghost_box,
-/obj/item/storage/box/nif_ghost_box,
-/obj/item/storage/box/nif_ghost_box,
-/obj/item/storage/box/nif_ghost_box,
-/obj/item/storage/box/nif_ghost_box,
-/obj/item/storage/box/nif_ghost_box,
+/obj/machinery/vending/starshine,
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
 	},
@@ -10605,6 +10595,10 @@
 	smoothing_flags = 0
 	},
 /area/centcom/holding/cafe/park)
+"itn" = (
+/obj/machinery/vending/starshine,
+/turf/open/floor/iron/dark,
+/area/centcom/interlink)
 "iuK" = (
 /obj/effect/light_emitter/interlink,
 /turf/open/floor/carpet/red,
@@ -17495,6 +17489,35 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/indestructible/plating,
 /area/centcom/holding/cafe)
+"qAs" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/structure/rack,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/turf/open/indestructible/hoteltile{
+	icon_state = "floor"
+	},
+/area/centcom/holding/cafe)
 "qAW" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 4
@@ -20620,6 +20643,11 @@
 	},
 /turf/open/floor/wood/large,
 /area/centcom/holding/cafe/park)
+"tXs" = (
+/obj/machinery/light/directional/east,
+/obj/machinery/vending/starshine,
+/turf/open/floor/iron/dark,
+/area/centcom/interlink)
 "tYf" = (
 /obj/machinery/vending/autodrobe,
 /obj/effect/turf_decal/bot,
@@ -38068,7 +38096,7 @@ jsN
 anv
 eYX
 iWF
-jXO
+tXs
 jxw
 aXG
 lAx
@@ -42933,7 +42961,7 @@ aXG
 aXG
 aXG
 tvw
-xyz
+itn
 dAM
 dmR
 tvw
@@ -71236,7 +71264,7 @@ apx
 apx
 tzr
 apx
-apx
+qAs
 aoR
 aqf
 aXV
