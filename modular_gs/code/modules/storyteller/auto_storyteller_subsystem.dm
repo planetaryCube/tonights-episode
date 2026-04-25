@@ -28,5 +28,5 @@ SUBSYSTEM_DEF(auto_storyteller_vote)
 	if(!isnull(SSvote.current_vote))
 		return
 
-	SSvote.initiate_vote(/datum/vote/storyteller, "automatic storyteller vote", forced = TRUE)
+	SSvote.initiate_vote(/datum/vote/storyteller/instant, "automatic storyteller vote", forced = TRUE)
 	targettime = targettime + voteinterval

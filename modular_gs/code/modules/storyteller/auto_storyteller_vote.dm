@@ -2,6 +2,13 @@
 	name = "Instant Storyteller"
 	default_message = "Vote for the storyteller! This vote will change the storyteller instantly."
 
+/datum/vote/storyteller/instant/can_be_initiated(mob/by_who, forced = FALSE)
+	. = ..()
+	if(forced)
+		return TRUE
+
+	return VOTE_AVAILABLE
+
 /datum/vote/storyteller/instant/finalize_vote(winning_option)
 	..()
 	/// Find the winner
