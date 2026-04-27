@@ -12,7 +12,7 @@
 /datum/vote/storyteller/instant/finalize_vote(winning_option)
 	..()
 	/// Find the winner
-	var/voted_storyteller
+	var/datum/storyteller/voted_storyteller
 	for(var/storyteller_type in SSgamemode.storytellers)
 		var/datum/storyteller/storyboy = SSgamemode.storytellers[storyteller_type]
 		if(storyboy.name == winning_option)
@@ -23,3 +23,4 @@
 		return
 
 	SSgamemode.set_storyteller(voted_storyteller)
+	SSgamemode.cap_storyteller_thresholds()
