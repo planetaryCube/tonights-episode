@@ -5896,8 +5896,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/table/wood,
-/obj/item/storage/cans/sixsoda,
+/obj/item/reagent_containers/cup/glass/drinkingglass/filled/starshine{
+	pixel_x = -6;
+	pixel_y = 11
+	},
+/obj/structure/table/glass/plasmaglass,
 /turf/open/floor/iron/dark,
 /area/station/commons/fitness/recreation/entertainment)
 "aBC" = (
@@ -47256,10 +47259,10 @@
 "huR" = (
 /obj/machinery/light/directional/west,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/vending/cola/red,
 /obj/effect/turf_decal/tile/neutral/opposingcorners{
 	dir = 1
 	},
+/obj/machinery/vending/starshine,
 /turf/open/floor/iron/dark,
 /area/station/commons/fitness/recreation/entertainment)
 "hvD" = (
@@ -76104,8 +76107,8 @@
 	dir = 8
 	},
 /obj/item/trash/can{
-	pixel_x = 9;
-	pixel_y = 7
+	pixel_x = 6;
+	pixel_y = 11
 	},
 /turf/open/floor/iron/dark,
 /area/station/commons/fitness/recreation/entertainment)
