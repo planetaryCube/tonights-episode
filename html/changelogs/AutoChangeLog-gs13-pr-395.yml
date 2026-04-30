@@ -1,0 +1,4 @@
+author: "evilew"
+delete-after: True
+changes:
+  - map: "Added Starshine vendors to a few maps: Interlink, CentComm, Ghost Cafe, Box, IceBox, Kilo and Meta."
