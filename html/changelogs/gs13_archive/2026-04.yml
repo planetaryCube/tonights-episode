@@ -39,3 +39,13 @@
   - rscadd: added Liponuts & Liposeeds to Fatwankus vendor
   - map: gave all medbay foyers 10k cells to ensure all placed SADs can operate properly
   - map: added hotbars to all kitchens
+2026-04-30:
+  GraremKosziriji:
+  - rscadd: Safe and unsafe(gib) bursting for fullness and fatness
+  - bugfix: blueberry gib runtime error
+  Swan:
+  - bugfix: fixes the weighting scale not giving back iron when deconstructed
+  - rscadd: Adds the big pizzuh... (and the big choco shake but that's not as important
+      as the big pizzuh...)
+  - rscadd: fullness limit is now slightly higher, and fullness stages are achievable
+      earlier
