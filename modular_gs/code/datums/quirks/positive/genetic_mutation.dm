@@ -32,7 +32,7 @@
 	return GLOB.genetic_mutation_choice
 
 /datum/preference/choiced/genetic_mutation/create_default_value()
-	return "Strength"
+	return "Glowy"
 
 /datum/preference/choiced/genetic_mutation/is_accessible(datum/preferences/preferences)
 	. = ..()
